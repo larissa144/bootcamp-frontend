@@ -8,6 +8,7 @@ const ButtonLayout = styled.button`
     color: #ffffff;
     border: none;
     border-radius: 20px;
+    margin-top: 13px;
     text-align: center;
 `
 

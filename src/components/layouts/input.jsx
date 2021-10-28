@@ -9,7 +9,6 @@ const InputLayout = styled.input`
     border-radius: 12px;
     text-align: center;
     border: 1px solid rgba(80, 80, 80, 0.479);
-    /* box-sizing: border-box; */
     margin-top: 13px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     text-align: left;
