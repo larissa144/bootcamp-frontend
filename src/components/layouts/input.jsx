@@ -14,11 +14,11 @@ const InputLayout = styled.input`
     text-align: left;
 `
 
-const Input = ({textInput, width, height}) =>  {
+const Input = ({textInput, width, height, onChange}) =>  {
 
     return (
         <>
-        <InputLayout width={width} height={height} type='text' value={textInput}/>
+        <InputLayout width={width} height={height} type='text' placeholder={textInput} onChange={onChange}/>
         </>
     )
 }

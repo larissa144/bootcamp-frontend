@@ -1,4 +1,5 @@
-import React from 'react'
+/* eslint-disable no-unused-vars */
+import React, {useState} from 'react'
 import styled from 'styled-components'
 import '../../assets/css/style.css'
 import LogoImage from '../../assets/img/logo-branco.png'
@@ -47,6 +48,17 @@ const TextForgetPass = styled.p`
 
 function Login() {
 
+  const [inputEmail, setInputEmail] = useState('')
+  const [inputPassword, setInputPassword] = useState('')
+
+  const handleChangeEmail = (event) => {
+    setInputEmail(event.target.value)
+  }
+  
+  const handleChangePassword = (event) => {
+    setInputPassword(event.target.value)
+  }
+
   return (
     
   <ColorBody>
@@ -59,11 +71,13 @@ function Login() {
 
         <DivInput>
           <Input
+            onChange={handleChangeEmail}
             textInput='e-mail'
             width={'100%'} 
             height={'18%'}
           />
           <Input
+            onChange={handleChangePassword}
             textInput='senha'
             width={'100%'} 
             height={'18%'}
