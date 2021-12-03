@@ -3,12 +3,14 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Login from './components/login/Login';
 import Cadastro from './components/cadastro/cadastro'
+import Ongs from './components/ongs/ongs'
 
 ReactDOM.render(
   <BrowserRouter>
     <Routes>
       <Route path="/" exact={true} element={<Login/>}/>
       <Route path="/cadastro" element={<Cadastro/>}/>
+      <Route path="/ongs" element={<Ongs/>}/>
     </Routes>
   </BrowserRouter>,
   document.getElementById('root')
