@@ -14,3 +14,6 @@ Projeto front-end do bootcamp da faculdade impacta da turma de engenharia de sof
 * entrar dentro da pasta: cd bootcamp-frontend
 * rodar o comando: npm i 
 * rodar o comando: npm start
+
+### Alternativamente a aplicação pode rodar com Docker
+* rodar o comando: docker-compose up
