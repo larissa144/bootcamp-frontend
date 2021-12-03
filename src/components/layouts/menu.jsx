@@ -9,6 +9,7 @@ const Menu = () => {
                 <li className="app-menu__item">
                     <Link className="app-menu__link" to="/">
                         Sair
+                        
                     </Link>
                 </li>
             </ul>
