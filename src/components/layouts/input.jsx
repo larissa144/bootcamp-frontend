@@ -5,6 +5,7 @@ import Upload from '../../assets/img/upload.png'
 const InputLayout = styled.input`
     width: ${props => props.width};
     height: ${props => props.height};
+    padding: 14px 10px;
     background: #ffffff;
     border-radius: 12px;
     text-align: center;
@@ -22,7 +23,6 @@ const InputLayout = styled.input`
 `
 const UploadButton = styled.button`
     width: 85%;
-    height: 8%;
     background: #B4AEE8;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     color: #ffffff;
@@ -30,6 +30,9 @@ const UploadButton = styled.button`
     border-radius: 20px;
     margin-top: 13px;
     text-align: center;
+    cursor: pointer;
+    padding: 10px 0px;
+
 `
 const UploadIcon = styled.img`
   height: 30px;
