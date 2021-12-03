@@ -1,4 +1,5 @@
-import React from 'react'
+/* eslint-disable no-unused-vars */
+import React, {useState} from 'react'
 import styled from 'styled-components'
 import '../../assets/css/style.css'
 import LogoImage from '../../assets/img/logo-branco.png'
@@ -6,6 +7,7 @@ import { ColorBody } from '../layouts/background-color'
 import { Card } from '../layouts/card'
 import Button from '../layouts/button'
 import Input from '../layouts/input'
+import { Link } from 'react-router-dom'
 
 const Logo = styled.img`
   height: 13%;
@@ -30,13 +32,12 @@ const DivInput = styled.div`
   height: 55%;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 `
-
 const DivCreateAcount = styled.div`
   justify-content: center;
   align-items: center;
   height: 28%;
-    width: 100%;
-    display: flex;
+  width: 100%;
+  display: flex;
 `
 
 const TextForgetPass = styled.p`
@@ -46,6 +47,17 @@ const TextForgetPass = styled.p`
 `
 
 function Login() {
+
+  const [inputEmail, setInputEmail] = useState('')
+  const [inputPassword, setInputPassword] = useState('')
+
+  const handleChangeEmail = (event) => {
+    setInputEmail(event.target.value)
+  }
+  
+  const handleChangePassword = (event) => {
+    setInputPassword(event.target.value)
+  }
 
   return (
     
@@ -59,11 +71,13 @@ function Login() {
 
         <DivInput>
           <Input
+            onChange={handleChangeEmail}
             textInput='e-mail'
             width={'100%'} 
             height={'18%'}
           />
           <Input
+            onChange={handleChangePassword}
             textInput='senha'
             width={'100%'} 
             height={'18%'}
@@ -76,11 +90,10 @@ function Login() {
         <TextForgetPass>Esqueceu sua senha?</TextForgetPass>
         </DivInput>
         <DivCreateAcount>
-          <Button 
-            textButton='Criar conta' 
-            width={'45%'} 
-            height={'30%'}
-          />
+        <Link to='/cadastro' style={{width:'100%', height: '28%', display:'flex', alignItems:'center', justifyContent: 'center'}}> 
+          <Button textButton='Criar conta' width={'45%'} height={'30%'}/>
+        </Link>
+          
         </DivCreateAcount>
 
       </Card>

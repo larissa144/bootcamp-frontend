@@ -1,11 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Login from './components/login/Login';
+import Cadastro from './components/cadastro/cadastro'
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Login />
-  </React.StrictMode>,
+  <BrowserRouter>
+    <Routes>
+      <Route path="/" exact={true} element={<Login/>}/>
+      <Route path="/cadastro" element={<Cadastro/>}/>
+    </Routes>
+  </BrowserRouter>,
   document.getElementById('root')
 );
 

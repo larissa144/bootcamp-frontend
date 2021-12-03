@@ -10,6 +10,7 @@ const ButtonLayout = styled.button`
     border-radius: 20px;
     margin-top: 13px;
     text-align: center;
+    cursor: pointer;
 `
 
 const Button = ({textButton, width, height}) =>  {
