@@ -10,3 +10,14 @@ export const ColorBody = styled.div`
   justify-content: center;
   align-items: center;
 `
+
+
+export const ColorBodyWhite  = styled.div`
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+`
