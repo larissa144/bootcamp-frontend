@@ -5,3 +5,39 @@ body, html {
     overflow-x: hidden;
     font-family: Roboto;
 }
+
+/*CSS Header*/
+.app-header {
+    align-items: center;
+    background: linear-gradient(121.03deg, #440A67 38.95%, #6A1B7C 75.35%, #89298C 88.6%);
+    display: flex;
+    justify-content: space-between;
+    padding: 0 2rem;
+}
+
+.app-header__logo {
+    background: #999;
+    height: 25px;
+    width: 100px;
+}
+
+/*CSS menu*/
+
+.app-menu__list {
+    display: flex;
+}
+
+.app-menu__item {
+    list-style: none;
+}
+
+.app-menu__link {
+    color: #ffffff;
+    font-family: sans-serif;
+    margin-right: 1rem;
+    text-decoration: none;
+}
+
+.app-menu__link:hover {
+    text-decoration: underline;
+}
