@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 const TitleDiv = styled.div`
     display: flex;
-    padding: 50px 0;
+    padding: 40px 0;
 ` 
 
 const TitleH1 = styled.div`

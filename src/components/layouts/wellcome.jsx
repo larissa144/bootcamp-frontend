@@ -18,7 +18,7 @@ const Wellcome = () =>{
   return(
     <WellcomeDiv>
         <ProfileImage />
-        <Span>Bem vindo, Fulano</Span>
+        <Span>Bem vindo, Fulano.</Span>
     </WellcomeDiv>
   )
 }
