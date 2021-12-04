@@ -14,11 +14,6 @@ import { FiMapPin } from "react-icons/fi";
 import { FiFileText } from "react-icons/fi";
 
 
-const Logo = styled.img`
-  height: 13%;
-  width: 58%;
-  margin-bottom: 25%;
-`
 const DivImg = styled.div`
   display: flex;
   width: 100%;
@@ -48,6 +43,12 @@ const DivInput = styled.div`
   display: flex;
   width: 100%;
   height: 60%;
+  & + input {
+      flex: 1;
+    }
+  svg{
+    margin-right: 16em;
+  }
 `
 const DivButton = styled.div`
   margin-bottom: auto;
@@ -69,7 +70,8 @@ const Subtitle = styled.p`
   margin-top: 0.10em;
   text-indent: 0;
   padding-right: 8em;
-  `
+`
+
 
 function CriarNovaOng() {
 
@@ -87,6 +89,7 @@ function CriarNovaOng() {
                           <Title>Criar uma nova ONG</Title>
                           <Subtitle>É muito simples e fácil.</Subtitle>
                       </DivTitles>
+                     
                       <DivInput>
                           <Input
                               // onChange={handleChangeEmail}
@@ -97,29 +100,32 @@ function CriarNovaOng() {
                           />
                             <Input
                               // onChange={handleChangeEmail}
+                              icon={FiMail}
                               textInput='E-mail'
                               width={'95%'} 
                               height={'12%'}
                           />
                             <Input
                               // onChange={handleChangeEmail}
+                              icon={FiPhone}
                               textInput='Telefone'
                               width={'95%'} 
                               height={'12%'}
                           />
                             <Input
                               // onChange={handleChangeEmail}
+                              icon={FiMapPin}
                               textInput='Endereço'
                               width={'95%'} 
                               height={'12%'}
                           />
                             <Input
                               // onChange={handleChangeEmail}
+                              icon={FiFileText}
                               textInput='Categoria'
                               width={'95%'} 
                               height={'12%'}
                           />
-
                       </DivInput>
                       <DivButton>
                           <Button 

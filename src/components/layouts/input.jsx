@@ -44,8 +44,8 @@ const Input = ({textInput, width, height, onChange, icon: Icon}) =>  {
 
     return (
         <>
-        {Icon &&<Icon size={23} color="490D46"/>}
-        <InputLayout width={width} height={height} type='text' placeholder={textInput} onChange={onChange}/>
+            {Icon &&<Icon size={23} color="490D46"/>}   
+            <InputLayout width={width} height={height} type='text' placeholder={textInput} onChange={onChange}/>
         </>
     )
 }
