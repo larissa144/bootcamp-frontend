@@ -7,7 +7,7 @@ const WellcomeDiv = styled.div`
     display: flex;
 `
 
-const Span = styled.div`
+const Span = styled.span`
     color: white;
     line-height: 60px;
     display: block;

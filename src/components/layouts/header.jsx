@@ -9,7 +9,6 @@ const Header = () =>{
     <header className="app-header">
         <Wellcome />
         <Menu />
-      
     </header>
   )
 }

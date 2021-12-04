@@ -22,7 +22,7 @@ body, html {
     background: linear-gradient(121.03deg, #440A67 38.95%, #6A1B7C 75.35%, #89298C 88.6%);
     display: flex;
     justify-content: space-between;
-    padding: 5px 5rem;
+    padding: 5px 3rem;
     height: 70px;
 }
 
