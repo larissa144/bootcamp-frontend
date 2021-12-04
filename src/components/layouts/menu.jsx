@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from 'react-router-dom'
 import '../../assets/css/style.css'
+import { FiLogOut } from "react-icons/fi";
 
 const Menu = () => {
     return(
@@ -8,7 +9,7 @@ const Menu = () => {
             <ul className="app-menu__list">
                 <li className="app-menu__item">
                     <Link className="app-menu__link" to="/">
-                        Sair
+                    <FiLogOut /> Sair
                         
                     </Link>
                 </li>

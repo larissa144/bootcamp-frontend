@@ -7,6 +7,12 @@ import { Card } from '../layouts/card'
 import  Header from '../layouts/header'
 import Button from '../layouts/button'
 import Input, {InputFile} from '../layouts/input'
+import { FiUser } from "react-icons/fi";
+import { FiMail } from "react-icons/fi";
+import { FiPhone } from "react-icons/fi";
+import { FiMapPin } from "react-icons/fi";
+import { FiFileText } from "react-icons/fi";
+
 
 const Logo = styled.img`
   height: 13%;
@@ -32,6 +38,7 @@ const DivTitles = styled.div`
   align-items: center;
   width: 100%;
   height: 20%;
+  margin-bottom: 0
 `
 const DivInput = styled.div`
   margin-bottom: auto;
@@ -53,12 +60,16 @@ const DivButton = styled.div`
 const Title = styled.p`
   color: #5A5657;
   font-size: 30px;
+  margin-bottom: 0px;
+  font
 `
 const Subtitle = styled.p`
   color: #5A5657;
   font-size: 15px;
-  margin-top: 2px;
-`
+  margin-top: 0.10em;
+  text-indent: 0;
+  padding-right: 8em;
+  `
 
 function CriarNovaOng() {
 
@@ -79,33 +90,34 @@ function CriarNovaOng() {
                       <DivInput>
                           <Input
                               // onChange={handleChangeEmail}
+                              icon={FiUser}
                               textInput='Nome da ONG'
-                              width={'85%'} 
-                              height={'8%'}
+                              width={'95%'} 
+                              height={'12%'}
                           />
                             <Input
                               // onChange={handleChangeEmail}
                               textInput='E-mail'
-                              width={'85%'} 
-                              height={'8%'}
+                              width={'95%'} 
+                              height={'12%'}
                           />
                             <Input
                               // onChange={handleChangeEmail}
                               textInput='Telefone'
-                              width={'85%'} 
-                              height={'8%'}
+                              width={'95%'} 
+                              height={'12%'}
                           />
                             <Input
                               // onChange={handleChangeEmail}
                               textInput='Endereço'
-                              width={'85%'} 
-                              height={'8%'}
+                              width={'95%'} 
+                              height={'12%'}
                           />
                             <Input
                               // onChange={handleChangeEmail}
                               textInput='Categoria'
-                              width={'85%'} 
-                              height={'8%'}
+                              width={'95%'} 
+                              height={'12%'}
                           />
 
                       </DivInput>

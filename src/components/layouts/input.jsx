@@ -40,10 +40,11 @@ const UploadIcon = styled.img`
   /* margin-bottom: 25%; */
 `
 
-const Input = ({textInput, width, height, onChange}) =>  {
+const Input = ({textInput, width, height, onChange, icon: Icon}) =>  {
 
     return (
         <>
+        {Icon &&<Icon size={23} color="490D46"/>}
         <InputLayout width={width} height={height} type='text' placeholder={textInput} onChange={onChange}/>
         </>
     )
