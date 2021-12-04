@@ -1,13 +1,14 @@
 import React from 'react'
 import Menu from "../layouts/menu"
 import '../../assets/css/style.css'
+import Wellcome from './wellcome'
 
 
 const Header = () =>{
   return(
     <header className="app-header">
-      <span className="app-header__logo"/>
-      <Menu />
+        <Wellcome />
+        <Menu />
       
     </header>
   )
