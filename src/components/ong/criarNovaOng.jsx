@@ -1,12 +1,11 @@
 import React from 'react'
 import '../../assets/css/style.css'
 import styled from 'styled-components'
-import LogoImage from '../../assets/img/logo-branco.png'
 import { ColorBodyWhite } from '../layouts/background-color'
 import { Card } from '../layouts/card'
 import  Header from '../layouts/header'
 import Button from '../layouts/button'
-import Input, {InputFile} from '../layouts/input'
+import Input from '../ong/styled'
 import { FiUser } from "react-icons/fi";
 import { FiMail } from "react-icons/fi";
 import { FiPhone } from "react-icons/fi";
@@ -33,23 +32,14 @@ const DivTitles = styled.div`
   align-items: center;
   width: 100%;
   height: 20%;
-  margin-bottom: 0
+  margin-bottom: 0;
 `
 const DivInput = styled.div`
   margin-bottom: auto;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
   display: flex;
   width: 100%;
-  height: 60%;
-  & + input {
-      flex: 1;
-    }
-  svg{
-    margin-right: 16em;
-  }
-`
+`  
 const DivButton = styled.div`
   margin-bottom: auto;
   justify-content: center;
@@ -62,7 +52,6 @@ const Title = styled.p`
   color: #5A5657;
   font-size: 30px;
   margin-bottom: 0px;
-  font
 `
 const Subtitle = styled.p`
   color: #5A5657;
