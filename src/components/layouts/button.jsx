@@ -3,7 +3,6 @@ import React from 'react'
 
 const ButtonLayout = styled.button`
     width: ${props => props.width};
-    height: ${props => props.height};
     background: ${props => props.color ? '#B4AEE8' : '#440A67'};
     color: #ffffff;
     border: none;
@@ -11,6 +10,7 @@ const ButtonLayout = styled.button`
     margin-top: 13px;
     text-align: center;
     cursor: pointer;
+    padding: 10px 0px;
 `
 
 const Button = ({textButton, width, height}) =>  {

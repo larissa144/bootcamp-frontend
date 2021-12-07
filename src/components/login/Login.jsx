@@ -28,8 +28,7 @@ const DivCard = styled.div`
 `
 const DivInput = styled.div`
   margin-bottom: auto;
-  padding: 22px;
-  height: 55%;
+  padding: 22px 22px 0px 22px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 `
 const DivCreateAcount = styled.div`
