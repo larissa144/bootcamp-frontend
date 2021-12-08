@@ -14,6 +14,7 @@ const Filter = styled.div`
     `
     
 const CategoryFilter = styled.div`
+    transition: .4s ease;
     display: flex;
     border-radius: 20px;
     cursor: pointer;
@@ -47,7 +48,7 @@ const Input = styled.input`
    :focus {
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     outline: 0;
-    }
+    } 
 `
 
 const NameFilter = styled.div`
@@ -61,6 +62,47 @@ const SelectFilter = styled.select`
     visibility: ${props => props.show ? "visible" : "hidden"};
     position: absolute;
     top: 40px;
+    transition: .4s ease; 
 ` 
 
-export { Main, Filter, CategoryFilter, CategoryFilterSpan, Input, NameFilter, SelectFilter }
+const OngsUl = styled.ul`
+    display: flex;
+    justify-content: space-around;
+    margin: 50px 0;
+`
+
+const OngLi = styled.li`
+    list-style-type: none;
+    width: 325px;
+    border-radius: 30px;
+    box-shadow: 1px 1px 5px 2px #c7bfbf;
+    padding: 25px 25px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    > span {
+        display: block;
+        width: 100%;
+        text-align: center;
+        font-size: 1.1em;
+        padding: 0 5px 20px;
+        white-space: pre;
+        overflow: hidden;
+    }
+`
+
+const OngImgContainer = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: 250px;
+    padding: 10px 0;
+`
+const OngImg = styled.img`
+    max-width: 90%;
+    max-height: 200px;
+    height: 230px;
+`
+
+export { Main, Filter, CategoryFilter, CategoryFilterSpan, Input, OngImgContainer, NameFilter, SelectFilter, OngImg, OngsUl, OngLi }

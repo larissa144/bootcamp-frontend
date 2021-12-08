@@ -11,12 +11,12 @@ const ButtonLayout = styled.button`
     text-align: center;
     cursor: pointer;
     padding: 10px 0px;
+    transition: .4s ease;
 `
 
-const Button = ({textButton, width, height}) =>  {
-
+const Button = ({textButton, width, height, color}) =>  {
     return (
-        <ButtonLayout width={width} height={height}>{textButton}</ButtonLayout>
+        <ButtonLayout width={width} height={height} color={color}>{textButton}</ButtonLayout>
     )
 }
 
