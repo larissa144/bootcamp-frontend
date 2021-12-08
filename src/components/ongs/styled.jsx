@@ -77,15 +77,17 @@ const OngLi = styled.li`
     border-radius: 30px;
     box-shadow: 1px 1px 5px 2px #c7bfbf;
     padding: 25px 25px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 
     > span {
         display: block;
         width: 100%;
         text-align: center;
         font-size: 1.1em;
-        padding: 0 0 20px;
+        padding: 0 5px 20px;
         white-space: pre;
-        padding: 0 5px;
         overflow: hidden;
     }
 `
@@ -96,24 +98,11 @@ const OngImgContainer = styled.div`
     justify-content: center;
     height: 250px;
     padding: 10px 0;
-    `
-    const OngImg = styled.img`
+`
+const OngImg = styled.img`
     max-width: 90%;
     max-height: 200px;
     height: 230px;
 `
 
-const FollowButton = styled.button`
-    background: ${props => props.isFollowing ? '#B4AEE8' : '#440A67'};
-    color: #ffffff;
-    border: none;
-    border-radius: 20px;
-    margin: 30px auto 0px;
-    text-align: center;
-    cursor: pointer;
-    padding: 10px 25px;
-    display: block;
-
-`
-
-export { Main, Filter, FollowButton, CategoryFilter, CategoryFilterSpan, Input, OngImgContainer, NameFilter, SelectFilter, OngImg, OngsUl, OngLi }
+export { Main, Filter, CategoryFilter, CategoryFilterSpan, Input, OngImgContainer, NameFilter, SelectFilter, OngImg, OngsUl, OngLi }

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { OngLi, OngImgContainer, OngImg, FollowButton } from './styled'
+import Button from '../layouts/button';
+import { OngLi, OngImgContainer, OngImg } from './styled'
 
 function OngItem({ name, img, category, isFollowing }) {
     return (
@@ -9,7 +10,7 @@ function OngItem({ name, img, category, isFollowing }) {
                     <OngImg src={img} />
                 </OngImgContainer>
                 <span>{category}</span>
-                <FollowButton isFollowing={isFollowing}>{ !isFollowing ? "Seguir" : "Desseguir" }</FollowButton>
+                <Button width={"120px"} color={isFollowing} textButton={!isFollowing ? "Seguir" : "Desseguir" }></Button>
             </OngLi>
         )
 }
