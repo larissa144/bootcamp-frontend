@@ -5,11 +5,13 @@ import Login from './components/login/Login';
 import Cadastro from './components/cadastro/cadastro'
 import Ongs from './components/ongs/ongs'
 import CriarNovaOng from './components/ong/criarNovaOng'
+import Secured from './pages/secured'
 
 ReactDOM.render(
   <BrowserRouter>
     <Routes>
       <Route path="/" exact={true} element={<Login/>}/>
+      <Route path="/secured" element={<Secured/>}/>
       <Route path="/cadastro" element={<Cadastro/>}/>
       <Route path="/ongs" element={<Ongs/>}/>
       <Route path="/criarNovaOng" element={<CriarNovaOng/>}/>
