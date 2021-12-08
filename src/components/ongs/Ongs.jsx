@@ -4,6 +4,7 @@ import Title from '../layouts/title';
 import { Main } from './styled';
 import Filters from "./Filters";
 import OngList from './OngList';
+import Footer from '../layouts/footer';
 
 function Ongs() {
     const [ categories, setCategories ] = useState([]);
@@ -19,6 +20,7 @@ function Ongs() {
                 </header>
                 <OngList ongs={ongs} />
             </Main>
+            <Footer />
         </>
     )
 }

@@ -14,7 +14,6 @@ const ButtonLayout = styled.button`
 `
 
 const Button = ({textButton, width, height}) =>  {
-
     return (
         <ButtonLayout width={width} height={height}>{textButton}</ButtonLayout>
     )
