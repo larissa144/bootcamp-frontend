@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { OngLi, OngImgContainer, OngImg } from './styled'
+import { OngLi, OngImgContainer, OngImg, FollowButton } from './styled'
 
 function OngItem({ name, img, category, isFollowing }) {
     return (
@@ -9,7 +9,7 @@ function OngItem({ name, img, category, isFollowing }) {
                     <OngImg src={img} />
                 </OngImgContainer>
                 <span>{category}</span>
-                <button isFollowing={isFollowing}>{ !isFollowing ? "Seguir" : "Desseguir" }</button>
+                <FollowButton isFollowing={isFollowing}>{ !isFollowing ? "Seguir" : "Desseguir" }</FollowButton>
             </OngLi>
         )
 }

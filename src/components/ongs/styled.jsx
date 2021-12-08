@@ -84,6 +84,9 @@ const OngLi = styled.li`
         text-align: center;
         font-size: 1.1em;
         padding: 0 0 20px;
+        white-space: pre;
+        padding: 0 5px;
+        overflow: hidden;
     }
 `
 
@@ -100,4 +103,17 @@ const OngImgContainer = styled.div`
     height: 230px;
 `
 
-export { Main, Filter, CategoryFilter, CategoryFilterSpan, Input, OngImgContainer, NameFilter, SelectFilter, OngImg, OngsUl, OngLi }
+const FollowButton = styled.button`
+    background: ${props => props.isFollowing ? '#B4AEE8' : '#440A67'};
+    color: #ffffff;
+    border: none;
+    border-radius: 20px;
+    margin: 30px auto 0px;
+    text-align: center;
+    cursor: pointer;
+    padding: 10px 25px;
+    display: block;
+
+`
+
+export { Main, Filter, FollowButton, CategoryFilter, CategoryFilterSpan, Input, OngImgContainer, NameFilter, SelectFilter, OngImg, OngsUl, OngLi }
