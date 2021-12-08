@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Login from './components/login/Login';
 import Cadastro from './components/cadastro/cadastro'
-import Ongs from './components/ongs/ongs'
+import Ongs from './components/ongs/Ongs'
 import CriarNovaOng from './components/ong/criarNovaOng'
 
 ReactDOM.render(

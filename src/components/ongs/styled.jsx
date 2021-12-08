@@ -65,4 +65,39 @@ const SelectFilter = styled.select`
     transition: .6s ease; 
 ` 
 
-export { Main, Filter, CategoryFilter, CategoryFilterSpan, Input, NameFilter, SelectFilter }
+const OngsUl = styled.ul`
+    display: flex;
+    justify-content: space-around;
+    margin: 50px 0;
+`
+
+const OngLi = styled.li`
+    list-style-type: none;
+    width: 325px;
+    border-radius: 30px;
+    box-shadow: 1px 1px 5px 2px #c7bfbf;
+    padding: 25px 25px;
+
+    > span {
+        display: block;
+        width: 100%;
+        text-align: center;
+        font-size: 1.1em;
+        padding: 0 0 20px;
+    }
+`
+
+const OngImgContainer = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: 250px;
+    padding: 10px 0;
+    `
+    const OngImg = styled.img`
+    max-width: 90%;
+    max-height: 200px;
+    height: 230px;
+`
+
+export { Main, Filter, CategoryFilter, CategoryFilterSpan, Input, OngImgContainer, NameFilter, SelectFilter, OngImg, OngsUl, OngLi }

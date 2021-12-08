@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Header from '../layouts/header'
 import Title from '../layouts/title';
 import { Main } from './styled';
-import Filters from "./filters";
+import Filters from "./Filters";
 import OngList from './OngList';
 
 function Ongs() {
