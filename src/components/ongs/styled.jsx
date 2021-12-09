@@ -11,7 +11,7 @@ const Filter = styled.div`
     position: relative;
     align-items: center;
     flex-wrap: wrap
-    `
+`
     
 const CategoryFilter = styled.div`
     transition: .4s ease;
