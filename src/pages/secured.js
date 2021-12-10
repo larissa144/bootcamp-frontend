@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Keycloak from 'keycloak-js';
-import Ongs from '../components/ongs/ongs'
+import Ongs from '../components/ongs/Ongs'
 class Secured extends Component {
 
   constructor(props) {

@@ -11,7 +11,7 @@ const Filter = styled.div`
     position: relative;
     align-items: center;
     flex-wrap: wrap
-    `
+`
     
 const CategoryFilter = styled.div`
     transition: .4s ease;
@@ -63,12 +63,14 @@ const SelectFilter = styled.select`
     position: absolute;
     top: 40px;
     transition: .4s ease; 
+    cursor: pointer
 ` 
 
 const OngsUl = styled.ul`
     display: flex;
     justify-content: space-around;
     margin: 50px 0;
+    flex-wrap: wrap
 `
 
 const OngLi = styled.li`
@@ -80,6 +82,7 @@ const OngLi = styled.li`
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    margin-bottom: 50px;
 
     > span {
         display: block;
