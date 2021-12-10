@@ -28,11 +28,25 @@ const PaginationButton = styled.li`
 `
 
 function Pagination({ page, setPage, hasNext, hasPrevious }) {
+    const next = () => {
+        if(hasNext) {
+            console.log("Going to next");
+            setPage(page + 1);
+        }
+    }
+    
+    const previous = () => {
+        if(hasPrevious) {
+            console.log("Going to previous");
+            setPage(page - 1);
+        }
+    }
+
     return (
         <PaginationUL>
-            <PaginationButton enable={hasPrevious}><FaAngleLeft size={23} color={!hasPrevious ? "#B4AEE8" : "#490D46"} /></PaginationButton>
+            <PaginationButton onClick={previous} enable={hasPrevious}><FaAngleLeft size={23} color={!hasPrevious ? "#B4AEE8" : "#490D46"} /></PaginationButton>
             <li className="current"><IoEllipse size={23} color="#B4AEE8" /></li>
-            <PaginationButton enable={hasNext}><FaAngleRight size={23} color={!hasNext ? "#B4AEE8" : "#490D46"} /></PaginationButton>
+            <PaginationButton onClick={next} enable={hasNext}><FaAngleRight size={23} color={!hasNext ? "#B4AEE8" : "#490D46"} /></PaginationButton>
         </PaginationUL>
     );
 }

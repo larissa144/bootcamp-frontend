@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from '../layouts/header'
 import Title from '../layouts/title';
 import { Main } from './styled';
@@ -13,6 +13,11 @@ function Ongs() {
     const [ page, setPage ] = useState(0);
     const [ hasPrevious, setHasPrevious ] = useState(false);
     const [ hasNext, setHasNext ] = useState(true);
+
+    useEffect(() => {
+        console.log({page})
+    }, [ page ]);
+
     return(
         <>
             <Header categories={categories} setCategories={setCategories} searchName={searchName} setSearchName={setSearchName} />
