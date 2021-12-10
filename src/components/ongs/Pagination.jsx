@@ -10,17 +10,29 @@ const PaginationUL = styled.ul`
     width: 125px;
     margin: 0 30px 30px auto;
 
-    > li {
+    > li.current {
         width: 20px;
+        cursor: default 
     }
 `
 
-function Pagination({ ongs }) {
+const PaginationButton = styled.li`
+    width: 20px;
+    cursor: pointer;
+    transition: .4s ease;
+    cursor: ${props => props.enable ? 'pointer' : 'default'};;
+    
+    :hover {
+        transform: ${props => props.enable ? 'scale(1.5)' : 'scale(1)'};
+    }
+`
+
+function Pagination({ page, setPage, hasNext, hasPrevious }) {
     return (
         <PaginationUL>
-            <li><FaAngleLeft size={23} color="#490D46" /></li>
-            <li><IoEllipse size={23} color="#490D46" /></li>
-            <li><FaAngleRight size={23} color="#490D46" /></li>
+            <PaginationButton enable={hasPrevious}><FaAngleLeft size={23} color={!hasPrevious ? "#B4AEE8" : "#490D46"} /></PaginationButton>
+            <li className="current"><IoEllipse size={23} color="#B4AEE8" /></li>
+            <PaginationButton enable={hasNext}><FaAngleRight size={23} color={!hasNext ? "#B4AEE8" : "#490D46"} /></PaginationButton>
         </PaginationUL>
     );
 }
