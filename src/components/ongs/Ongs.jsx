@@ -8,6 +8,7 @@ import Footer from '../layouts/footer';
 import i1 from '../../assets/img/ong1.png';
 import i2 from '../../assets/img/ong2.png';
 import i3 from '../../assets/img/ong3.png';
+import axios from 'axios';
 
 const ongsArr = [
     {
@@ -42,7 +43,7 @@ const ongsArr = [
     }
 ]
 
-function Ongs() {
+function Ongs({ keycloak }) {
     const [ categories, setCategories ] = useState([]);
     const [ searchName, setSearchName ] = useState("");
     const [ ongs, setOngs ] = useState(ongsArr);
@@ -53,6 +54,17 @@ function Ongs() {
     useEffect(() => {
         console.log({page})
     }, [ page ]);
+
+    useEffect(async () => {
+        if(keycloak){
+            const result = await axios.get("http://localhost:8080/ongs", {
+                headers: {
+                    Authorization: "Bearer " + keycloak.token
+                }
+            })
+            console.log({result})
+        }
+    }, [ keycloak ]);
 
     return(
         <>
