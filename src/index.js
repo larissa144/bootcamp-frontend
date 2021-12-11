@@ -6,6 +6,7 @@ import Cadastro from './components/cadastro/cadastro'
 import Ongs from './components/ongs/Ongs'
 import CriarNovaOng from './components/ong/criarNovaOng'
 import Secured from './pages/secured'
+import Perfil from './components/perfil/perfil'
 
 ReactDOM.render(
   <BrowserRouter>
@@ -15,6 +16,7 @@ ReactDOM.render(
       <Route path="/cadastro" element={<Cadastro/>}/>
       <Route path="/ongs" element={<Ongs/>}/>
       <Route path="/criarNovaOng" element={<CriarNovaOng/>}/>
+      <Route path="/perfil" element={<Perfil/>}/>
     </Routes>
   </BrowserRouter>,
   document.getElementById('root')
