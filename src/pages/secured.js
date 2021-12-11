@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Keycloak from 'keycloak-js';
 import Ongs from '../components/ongs/Ongs'
+import { authenticate } from '../utils/authenticate'
+import { Navigate } from 'react-router';
 class Secured extends Component {
 
   constructor(props) {
@@ -12,21 +14,20 @@ class Secured extends Component {
     const keycloak = Keycloak('/keycloak.json');
     keycloak.init({onLoad: 'login-required', checkLoginIframe: false}).then(authenticated => {
      this.setState({ keycloak: keycloak, authenticated: authenticated })
+     authenticate(keycloak, this.props.setIsAuth);
     })
-  }
+}
 
-  render() {
+render() {
     if (this.state.keycloak) {
-      if (this.state.authenticated) return (
-        <>
-          <Ongs keycloak={this.state.keycloak}/>
-        </>
+        if (this.state.authenticated) return (
+          <Navigate to="/feed" />
       ); else return (<div>Unable to authenticate!</div>)
     }
     return (
-     <>
-      <Ongs/>
-    </>
+     <div>
+         Carregando
+     </div>
     );
   }
 }
