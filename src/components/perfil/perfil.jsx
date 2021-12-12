@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import Header from '../layouts/header'
+import PerfilOng from './perfilOng';
+import i1 from '../../assets/img/ong1.png';
 import { Main, PerfilContent, PerfilSocialMedias, Divisor } from './styled'
-
 
 function Perfil({ keycloak }) {
   const [categories, setCategories] = useState([]);
@@ -29,7 +30,16 @@ function Perfil({ keycloak }) {
     <>
       <Header categories={categories} setCategories={setCategories} searchName={searchName} setSearchName={setSearchName} />
       <Main>
-        <PerfilContent>COMPONENTE DE PERFIL</PerfilContent>
+        <PerfilContent>
+          <PerfilOng
+            name={"Ong caminho das Crianças"}
+            img={i1}
+            tel={"(11) 99999-9999"}
+            email={"email@email.com"}
+            address={"Rua das Crianças, 123"}
+            category={"Crianças e Adolescentes"}
+          />
+        </PerfilContent>
         <Divisor></Divisor>
         <PerfilSocialMedias>COMPONENTE DE MÍDIAS SOCIAIS</PerfilSocialMedias>
       </Main>

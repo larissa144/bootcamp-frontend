@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 const Main = styled.div`  
   text-align: center;
-  margin-top: 30px ;
+  margin-top: 30px;
 `
 
 const PerfilContent = styled.div`  
@@ -22,4 +22,33 @@ const Divisor = styled.div`
   left: 50%;
 `
 
-export { Main, PerfilContent, PerfilSocialMedias, Divisor }
+const OngInfos = styled.li`
+    display: flex;
+    flex-wrap: wrap;
+
+    > span {
+        display: block;
+        width: 100%;
+        text-align: center;
+        font-size: 1.1em;
+        padding: 0 5px 15px;
+        white-space: pre;
+        overflow: hidden;
+    }
+`
+
+const OngImgContainer = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: 250px;
+    padding: 10px 0;
+`
+
+const OngImg = styled.img`
+    max-width: 90%;
+    max-height: 200px;
+    height: 230px;
+`
+
+export { Main, PerfilContent, PerfilSocialMedias, Divisor, OngInfos as OngLi, OngImgContainer, OngImg }
