@@ -51,4 +51,31 @@ const OngImg = styled.img`
     height: 230px;
 `
 
-export { Main, PerfilContent, PerfilSocialMedias, Divisor, OngInfos as OngLi, OngImgContainer, OngImg }
+const OngLi = styled.div`
+    display: flex;
+    width: 300px;
+    justify-content: center;
+    align-items: center;
+`
+
+const OngImgMidiaContainer = styled.div`
+    width: 100%;
+`
+
+const OngImgMidia = styled.img`
+    max-height: 40px;
+    height: 40px;
+`
+
+export {
+  Main,
+  PerfilContent,
+  PerfilSocialMedias,
+  Divisor,
+  OngInfos,
+  OngImgContainer,
+  OngImg,
+  OngImgMidiaContainer,
+  OngImgMidia,
+  OngLi
+}

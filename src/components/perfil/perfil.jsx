@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import Header from '../layouts/header'
 import PerfilOng from './perfilOng';
+import MidiaSocial from './midia';
 import i1 from '../../assets/img/ong1.png';
 import { Main, PerfilContent, PerfilSocialMedias, Divisor } from './styled'
 
@@ -31,6 +32,7 @@ function Perfil({ keycloak }) {
       <Header categories={categories} setCategories={setCategories} searchName={searchName} setSearchName={setSearchName} />
       <Main>
         <PerfilContent>
+
           <PerfilOng
             name={"Ong caminho das Crianças"}
             img={i1}
@@ -39,9 +41,26 @@ function Perfil({ keycloak }) {
             address={"Rua das Crianças, 123"}
             category={"Crianças e Adolescentes"}
           />
+          
         </PerfilContent>
         <Divisor></Divisor>
-        <PerfilSocialMedias>COMPONENTE DE MÍDIAS SOCIAIS</PerfilSocialMedias>
+
+        <PerfilSocialMedias>
+
+          <MidiaSocial
+            img={i1}
+            user={"@instagram"}
+          />
+          <MidiaSocial
+            img={i1}
+            user={"@instagram"}
+          />
+          <MidiaSocial
+            img={i1}
+            user={"@instagram"}
+          />
+
+        </PerfilSocialMedias>
       </Main>
     </>
   );

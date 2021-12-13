@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { OngLi, OngImgContainer, OngImg } from './styled';
+import { OngInfos, OngImgContainer, OngImg } from './styled';
 function PerfilOng({ name, img, category, tel, email, address }) {
     return (
-        <OngLi>
+        <OngInfos>
             <span>{name}</span>
             <OngImgContainer>
                 <OngImg src={img} />
@@ -11,7 +11,7 @@ function PerfilOng({ name, img, category, tel, email, address }) {
             <span>{email}</span>
             <span>{address}</span>
             <span>{category}</span>
-        </OngLi>
+        </OngInfos>
     )
 }
 
