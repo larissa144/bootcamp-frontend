@@ -9,7 +9,7 @@ function OngList({ ongs, page, setPage, hasNext, hasPrevious }) {
             <OngsUl>
                 { ongs.map(ong => {
                     return (
-                        <OngItem name={ong.name} img={ong.img} category={ong.category} isFollowing={true}/>
+                        <OngItem id={ong.id} name={ong.nome} img={null} category={ong.categoria.nome} isFollowing={ong.situacao === "SEGUINDO"}/>
                     )
                 }) }
             </OngsUl>

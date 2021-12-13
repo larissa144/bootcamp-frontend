@@ -5,45 +5,10 @@ import { Main } from './styled';
 import Filters from "./Filters";
 import OngList from './OngList';
 import Footer from '../layouts/footer';
-import i1 from '../../assets/img/ong1.png';
-import i2 from '../../assets/img/ong2.png';
-import i3 from '../../assets/img/ong3.png';
 import axios from 'axios';
+import { getAuthData } from "../../utils/authenticate"
 
-const ongsArr = [
-    {
-        name: "Ong caminho das crianças",
-        img: i1,
-        category: "Crianças e adolescentes"
-    },
-    {
-        name: "Juntos contra os vicios",
-        img: i2,
-        category: "Alcoolismo, drogas"
-    },
-    {
-        name: "Amor de mãe",
-        img: i3,
-        category: "Mulheres adultas"
-    },
-    {
-        name: "1",
-        img: i1,
-        category: "Crianças e adolescentes"
-    },
-    {
-        name: "2",
-        img: i2,
-        category: "Alcoolismo, drogas"
-    },
-    {
-        name: "3",
-        img: i3,
-        category: "Mulheres adultas"
-    }
-]
-
-function Ongs({ keycloak }) {
+function Ongs() {
     const [ categories, setCategories ] = useState([]);
     const [ searchName, setSearchName ] = useState("");
     const [ ongs, setOngs ] = useState(ongsArr);
@@ -53,18 +18,19 @@ function Ongs({ keycloak }) {
 
     useEffect(() => {
         console.log({page})
-    }, [ page ]);
+        console.log({searchName})
+        console.log({categories})
+    }, [ page, searchName, categories ]);
 
     useEffect(async () => {
-        if(keycloak){
-            const result = await axios.get("http://localhost:8080/ongs", {
-                headers: {
-                    Authorization: "Bearer " + keycloak.token
-                }
-            })
-            console.log({result})
-        }
-    }, [ keycloak ]);
+        const auth = getAuthData();
+        const result = await axios.get("http://ec2-3-17-26-83.us-east-2.compute.amazonaws.com:8080/ongs", {
+            headers: {
+                Authorization: "Bearer " + auth.token
+            }
+        });
+        setOngs([ ...result.data.content ]);
+    }, []);
 
     return(
         <>

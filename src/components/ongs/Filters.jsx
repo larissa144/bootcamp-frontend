@@ -14,7 +14,7 @@ function Filters({ categories, setCategories, searchName, setSearchName }) {
                 <CgOptions size={23} color={showCategories ? "white" : "490D46"} />
                 <CategoryFilterSpan>Filtrar por categoria</CategoryFilterSpan>
             </CategoryFilter>
-            <SelectFilter multiple={true} show={showCategories}>
+            <SelectFilter show={showCategories}>
                 <option>Animais</option>
                 <option>Racismo</option>
                 <option>Educação</option>

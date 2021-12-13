@@ -12,7 +12,7 @@ function App() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={ <LandingPage setIsAuth={setIsAuth} /> }/>
+                <Route path="/" element={ !isAuth ? <LandingPage /> : <Secured setIsAuth={setIsAuth}/> }/>
                 <Route path="/login" element={ <Secured setIsAuth={setIsAuth} /> }/>
                 <Route path="/feed" element={ isAuth ? <Ongs/> : <p>Not found</p> }/>
                 <Route path="/ongs" element={ isAuth ? <Ongs/> : <p>Not found</p> }/>
