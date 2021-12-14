@@ -14,11 +14,11 @@ const Span = styled.span`
     padding: 0 20px;
 `
 
-const Wellcome = () =>{
+const Wellcome = ( {name} ) =>{
   return(
     <WellcomeDiv>
         <ProfileImage />
-        <Span>Bem vindo, Fulano.</Span>
+        <Span>Bem vindo, {name}.</Span>
     </WellcomeDiv>
   )
 }
