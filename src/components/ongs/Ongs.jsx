@@ -11,7 +11,7 @@ import { getAuthData } from "../../utils/authenticate"
 function Ongs() {
     const [ categories, setCategories ] = useState([]);
     const [ searchName, setSearchName ] = useState("");
-    const [ ongs, setOngs ] = useState(ongsArr);
+    const [ ongs, setOngs ] = useState([]);
     const [ page, setPage ] = useState(0);
     const [ hasPrevious, setHasPrevious ] = useState(false);
     const [ hasNext, setHasNext ] = useState(true);
