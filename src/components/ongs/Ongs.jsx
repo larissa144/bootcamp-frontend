@@ -6,7 +6,7 @@ import Filters from "./Filters";
 import OngList from './OngList';
 import Footer from '../layouts/footer';
 import axios from 'axios';
-import { getAuthData } from "../../utils/authenticate"
+import { useKeycloak } from '@react-keycloak/web'
 
 function Ongs() {
     const [ categories, setCategories ] = useState([]);
@@ -15,6 +15,7 @@ function Ongs() {
     const [ page, setPage ] = useState(0);
     const [ hasPrevious, setHasPrevious ] = useState(false);
     const [ hasNext, setHasNext ] = useState(true);
+    const { keycloak, initialized } = useKeycloak()
 
     useEffect(() => {
         console.log({page})
@@ -23,15 +24,16 @@ function Ongs() {
     }, [ page, searchName, categories ]);
 
     useEffect(async () => {
-        const auth = getAuthData();
-        console.log({auth})
-        const result = await axios.get("http://ec2-3-17-26-83.us-east-2.compute.amazonaws.com:8080/ongs", {
+        if(initialized) {
+            console.log(keycloak)
+            const result = await axios.get("http://ec2-3-17-26-83.us-east-2.compute.amazonaws.com:8080/ongs", {
             headers: {
-                Authorization: "Bearer " + auth.token
+                Authorization: "Bearer " + keycloak.token
             }
-        });
-        setOngs([ ...result.data.content ]);
-    }, []);
+            });
+            setOngs([ ...result.data.content ]);
+        }
+    }, [ initialized ]);
 
     return(
         <>

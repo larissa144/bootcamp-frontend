@@ -1,35 +1,23 @@
-import React, { Component } from 'react';
-import Keycloak from 'keycloak-js';
-import { authenticate } from '../utils/authenticate'
+import React, { useEffect, useState } from 'react';
 import { Navigate } from 'react-router';
-class Secured extends Component {
+import { useKeycloak } from '@react-keycloak/web'
 
-    constructor(props) {
-        super(props);
-        this.state = { keycloak: null, authenticated: false };
-    }
-
-    componentDidMount() {
-        const keycloak = Keycloak('/keycloak.json');
-        keycloak.init({onLoad: 'login-required', checkLoginIframe: false}).then(authenticated => {
-            this.setState({ keycloak: keycloak, authenticated: authenticated })
-            authenticate(keycloak, this.props.setIsAuth);
-        })
-    }
-
-    render() {
-        if (this.state.keycloak) {
-            if (this.state.authenticated) return (
-                <Navigate to="/feed" />
-            ); else return (
-                <div>Unable to authenticate!</div>
-            )
+function Secured () {
+    const { keycloak, initialized } = useKeycloak()
+    
+    useEffect(() => {
+        if(initialized && !keycloak.authenticated){
+            console.log({keycloak})
+            keycloak.login();
         }
-        return (
-            <div>
-                Carregando
-            </div>
-        );
+    }, [ initialized ]);
+
+    if (keycloak) {
+        if (keycloak.authenticated) return (
+            <Navigate to="/feed" />
+        ); else return (
+            <div>Carregando...</div>
+        )
     }
 }
 export default Secured;
