@@ -8,9 +8,9 @@ const Img = styled.img`
     border-radius: 50%;
 `
 
-const ProfileImage = () =>{
+const ProfileImage = ( {img} ) =>{
   return(
-    <Img src={profile} />
+    <Img src={img} />
   )
 }
 

@@ -8,7 +8,7 @@ const Menu = () => {
     const { keycloak, initialized } = useKeycloak()
 
     return(
-        <nav class="app-menu">
+        <nav className="app-menu">
             <ul className="app-menu__list">
                 <li className="app-menu__item">
                     <Link onClick={(e) => {

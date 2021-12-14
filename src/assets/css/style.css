@@ -41,5 +41,10 @@ body, html {
     font-family: sans-serif;
     margin-right: 1rem;
     text-decoration: none;
+    transition: .4s ease;
+}
+
+.app-menu__link:hover {
+    font-weight: bold;
 }
 
