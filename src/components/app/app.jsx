@@ -3,25 +3,28 @@ import Secured from '../../pages/secured';
 import Ongs from '../ongs/Ongs';
 import CriarNovaOng from '../ong/criarNovaOng';
 import Cadastro from '../cadastro/cadastro';
-import { isAuthenticated } from '../../utils/authenticate';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import LandingPage from '../landing-page/landing-page';
 import Perfil from "../perfil/perfil"
+import { ReactKeycloakProvider } from '@react-keycloak/web'
+import keycloak from '../../utils/keycloak'
+import PrivateRoute from '../layouts/private-route';
 
 function App() {
-    const [isAuth, setIsAuth ] = useState(isAuthenticated());
     return (
-        <BrowserRouter>
-            <Routes>
-                <Route path="/" element={ !isAuth ? <LandingPage /> : <Secured setIsAuth={setIsAuth}/> }/>
-                <Route path="/login" element={ <Secured setIsAuth={setIsAuth} /> }/>
-                <Route path="/feed" element={ isAuth ? <Ongs/> : <p>Not found</p> }/>
-                <Route path="/ongs" element={ isAuth ? <Ongs/> : <p>Not found</p> }/>
-                <Route path="/perfil" element={isAuth ? <Perfil/> : <p>Not found</p> }/>
-                <Route path="/criarNovaOng" element={ isAuth ? <CriarNovaOng/> : <p>Not found</p> }/>
-                <Route path="/cadastro" element={ !isAuth ? <Cadastro/> : <p>Not found</p> }/>
-            </Routes>
-        </BrowserRouter>
+        <ReactKeycloakProvider authClient={keycloak} initOptions={{checkLoginIframe: false}} >
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={<LandingPage />}/>
+                    <Route path="/login" element={<Secured />}/>
+                    <Route path="/feed" element={<PrivateRoute children={<Ongs/>} />}/>
+                    <Route path="/ongs" element={<PrivateRoute children={<Ongs/>} />}/>
+                    <Route path="/perfil" element={<PrivateRoute children={<Perfil/>} />}/>
+                    <Route path="/criarNovaOng" element={<PrivateRoute children={<CriarNovaOng/>} />}/>
+                    <Route path="/cadastro" element={<Cadastro/>}/>
+                </Routes>
+            </BrowserRouter>
+        </ReactKeycloakProvider>
     )
 }
 

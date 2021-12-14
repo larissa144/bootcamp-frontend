@@ -1,16 +1,24 @@
-import React, { useState } from 'react'
-import Menu from "../layouts/menu"
-import '../../assets/css/style.css'
-import Wellcome from './wellcome'
-import { getAuthData } from "../../utils/authenticate";
+import React, { useEffect, useState } from 'react';
+import Menu from "../layouts/menu";
+import '../../assets/css/style.css';
+import Wellcome from './wellcome';
+import { useKeycloak } from '@react-keycloak/web';
+import axios from 'axios';
 
+const Header = () => {
+    const { keycloak, initialized } = useKeycloak()
+    const [ name, setName ] = useState("");
+    const [ profileImage, setProfileImage ] = useState("");
 
-const Header = () =>{
-    const [ authData, setAuthData ] = useState(getAuthData());
+    useEffect(() => {
+        if(initialized) {
+            setName(keycloak.tokenParsed.name)
+        }
+    }, [ initialized ]);
 
     return(
         <header className="app-header">
-            <Wellcome name={authData.tokenParsed.preferred_username}/>
+            <Wellcome name={name} profileImage={profileImage}/>
             <Menu />
         </header>
     )
