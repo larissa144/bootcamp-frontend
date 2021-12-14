@@ -11,7 +11,7 @@ import { getAuthData } from "../../utils/authenticate"
 function Ongs() {
     const [ categories, setCategories ] = useState([]);
     const [ searchName, setSearchName ] = useState("");
-    const [ ongs, setOngs ] = useState(ongsArr);
+    const [ ongs, setOngs ] = useState([]);
     const [ page, setPage ] = useState(0);
     const [ hasPrevious, setHasPrevious ] = useState(false);
     const [ hasNext, setHasNext ] = useState(true);
@@ -24,6 +24,7 @@ function Ongs() {
 
     useEffect(async () => {
         const auth = getAuthData();
+        console.log({auth})
         const result = await axios.get("http://ec2-3-17-26-83.us-east-2.compute.amazonaws.com:8080/ongs", {
             headers: {
                 Authorization: "Bearer " + auth.token

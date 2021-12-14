@@ -26,13 +26,13 @@ const InputContainer = styled.div`
     padding-left: 8px;
 `
 
-const Input = ({textInput, width, height, onChange, icon: Icon, ... repeatInput}) =>  {
+const Input = ({ textInput, width, height, onChange, icon: Icon, ...repeatInput }) => {
 
     return (
         <>
             <InputContainer>
-                {Icon &&<Icon size={23} color="490D46"/>}   
-                <InputLayout {... repeatInput} width={width} height={height} type='text' placeholder={textInput} onChange={onChange} />
+                {Icon && <Icon size={23} color="490D46" />}
+                <InputLayout {...repeatInput} width={width} height={height} type='text' placeholder={textInput} onChange={onChange} />
             </InputContainer>
         </>
     )
