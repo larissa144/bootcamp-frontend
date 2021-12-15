@@ -37,10 +37,10 @@ function Perfil(props) {
           <PerfilOng
             name={ongData.nome ? ongData.nome : "Nome da ONG"}
             img={i1}
-            tel={ongData.contato.telefone ? ongData.contato.telefone : "Telefone da ONG"}
-            email={ongData.contato.email ? ongData.contato.email : "Email da ONG"}
-            address={ongData.contato.endereco ? ongData.contato.endereco : "Endereço da ONG"}
-            category={"Crianças e Adolescentes"}
+            tel={ongData.contato ? ongData.contato.telefone : "Telefone da ONG"}
+            email={ongData.contato ? ongData.contato.email : "Email da ONG"}
+            address={ongData.contato ? ongData.contato.endereco : "Endereço da ONG"}
+            category={ongData.categoria ? ongData.categoria.nome : ""}
           />
 
         </PerfilContent>
