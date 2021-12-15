@@ -3,7 +3,7 @@ import React from 'react'
 
 const ButtonLayout = styled.button`
     width: ${props => props.width};
-    background: ${props => props.color ? '#B4AEE8' : '#440A67'};
+    background: ${props => props.active ? '#B4AEE8' : '#440A67'};
     color: #ffffff;
     border: none;
     border-radius: 20px;
@@ -14,9 +14,9 @@ const ButtonLayout = styled.button`
     transition: .4s ease;
 `
 
-const Button = ({textButton, width, height, color}) =>  {
+const Button = ({textButton, width, height, active}) =>  {
     return (
-        <ButtonLayout width={width} height={height} color={color}>{textButton}</ButtonLayout>
+        <ButtonLayout width={width} height={height} active={active}>{textButton}</ButtonLayout>
     )
 }
 

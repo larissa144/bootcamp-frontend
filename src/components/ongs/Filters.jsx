@@ -3,7 +3,7 @@ import { FiSearch } from "react-icons/fi";
 import { CgOptions } from "react-icons/cg";
 import { Filter, CategoryFilter, CategoryFilterSpan, Input, NameFilter, SelectFilter } from './styled';
 
-function Filters({ categories, setCategories, searchName, setSearchName }) {
+function Filters({ category, setCategory, searchName, setSearchName, page, setPage }) {
     const [showCategories, setShowCategories] = useState(false);
 
     return (
@@ -21,7 +21,9 @@ function Filters({ categories, setCategories, searchName, setSearchName }) {
                 <option>LGBT</option>
             </SelectFilter>
             <NameFilter>
-                <Input placeholder="Buscar por nome" width="300px" />
+                <Input placeholder="Buscar por nome" width="300px" value={searchName} onChange={(e) => {
+                    setSearchName(e.target.value)
+                }}/>
                 <FiSearch size={23} color="490D46" style={{
                     position: "absolute",
                     top: "5px",

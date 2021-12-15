@@ -26,13 +26,13 @@ function OngItem({ id, name, category, isFollowing }) {
     }, [ initialized ])
 
     return (
-            <OngLi>
+            <OngLi key={id}>
                 <span>{name}</span>
                 <OngImgContainer>
                     <OngImg src={img} />
                 </OngImgContainer>
                 <span>{category}</span>
-                <Button width={"120px"} color={isFollowing} textButton={!isFollowing ? "Seguir" : "Desseguir" }></Button>
+                <Button width={"120px"} active={isFollowing} textButton={!isFollowing ? "Seguir" : "Desseguir" }></Button>
             </OngLi>
         )
 }

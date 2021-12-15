@@ -9,10 +9,10 @@ import axios from 'axios';
 import { useKeycloak } from '@react-keycloak/web'
 
 function Ongs() {
-    const [ categories, setCategories ] = useState([]);
+    const [ category, setCategory ] = useState([]);
     const [ searchName, setSearchName ] = useState("");
     const [ ongs, setOngs ] = useState([]);
-    const [ page, setPage ] = useState(0);
+    const [ page, setPage ] = useState(1);
     const [ hasPrevious, setHasPrevious ] = useState(false);
     const [ hasNext, setHasNext ] = useState(true);
     const { keycloak, initialized } = useKeycloak()
@@ -20,27 +20,40 @@ function Ongs() {
     useEffect(() => {
         console.log({page})
         console.log({searchName})
-        console.log({categories})
-    }, [ page, searchName, categories ]);
+        console.log({category})
+    }, [ page, searchName, category ]);
 
     useEffect(async () => {
         if(initialized) {
-            const result = await axios.get("http://ec2-3-17-26-83.us-east-2.compute.amazonaws.com:8080/ongs", {
-            headers: {
-                Authorization: "Bearer " + keycloak.token
+            const params = {
+                pagina: page,
+                qtdPorPagina: 6,
             }
+
+            if(searchName) {
+                params.nome = searchName;
+            }
+
+            const result = await axios.get("http://ec2-3-17-26-83.us-east-2.compute.amazonaws.com:8080/ongs", {
+                headers: {
+                    Authorization: "Bearer " + keycloak.token
+                },
+                params
             });
+            console.log(result.data);
+            setHasPrevious(result.data.temPaginaAnterior);
+            setHasNext(result.data.temProximaPagina);
             setOngs([ ...result.data.content ]);
         }
-    }, [ initialized ]);
+    }, [ initialized, page, searchName, category ]);
 
     return(
         <>
-            <Header categories={categories} setCategories={setCategories} searchName={searchName} setSearchName={setSearchName} />
+            <Header />
             <Main>
                 <header>
                     <Title title={"Listagem de instituições cadastradas"} />
-                    <Filters />
+                    <Filters category={category} setCategory={setCategory} searchName={searchName} setSearchName={setSearchName} page={page} setPage={setPage} />
                 </header>
                 <OngList ongs={ongs} page={page} setPage={setPage} hasPrevious={hasPrevious} hasNext={hasNext} />
             </Main>
