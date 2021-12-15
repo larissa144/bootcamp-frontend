@@ -59,7 +59,7 @@ function Ongs() {
                     <Title title={"Listagem de instituições cadastradas"} />
                     <Filters category={category} setCategory={setCategory} searchName={searchName} setSearchName={setSearchName} page={page} setPage={setPage} />
                 </header>
-                <OngList ongs={ongs} page={page} setPage={setPage} hasPrevious={hasPrevious} hasNext={hasNext} />
+                <OngList ongs={ongs} setOngs={setOngs} page={page} setPage={setPage} hasPrevious={hasPrevious} hasNext={hasNext} />
             </Main>
             <Footer />
         </>

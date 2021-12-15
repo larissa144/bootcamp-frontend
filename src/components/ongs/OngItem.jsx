@@ -5,7 +5,7 @@ import axios from 'axios';
 import defaultImage from '../../assets/img/ong1.png';
 import { useKeycloak } from '@react-keycloak/web'
 
-function OngItem({ id, name, category, isFollowing }) {
+function OngItem({ id, name, category, isFollowing, ongs, setOngs }) {
     const { keycloak, initialized } = useKeycloak()
     const [img, setImg] = useState(null);
 
@@ -25,6 +25,35 @@ function OngItem({ id, name, category, isFollowing }) {
         }
     }, [ initialized ])
 
+    const toggleFollow = async () => {
+        const seguir = !isFollowing;
+        try {
+            const result = await axios.put(`http://ec2-3-17-26-83.us-east-2.compute.amazonaws.com:8080/ongs/${id}/seguir`,
+                {
+                    seguir
+                },
+                {
+                    headers: {
+                        Authorization: "Bearer " + keycloak.token
+                    },
+                }
+            );
+
+            const newOngs = ongs.map(item => {
+                if(item.id !== id){
+                    return item
+                }
+                const newItem = { ...item };
+                newItem.situacao = seguir ? "SEGUINDO" : "NAO_SEGUINDO";
+                return newItem;
+            })
+            console.log({newOngs})
+            setOngs(newOngs)
+
+        } catch (error) {
+        }
+    }
+
     return (
             <OngLi key={id}>
                 <span>{name}</span>
@@ -32,7 +61,7 @@ function OngItem({ id, name, category, isFollowing }) {
                     <OngImg src={img} />
                 </OngImgContainer>
                 <span>{category}</span>
-                <Button width={"120px"} active={isFollowing} textButton={!isFollowing ? "Seguir" : "Desseguir" }></Button>
+                <Button onClick={toggleFollow} width={"120px"} active={isFollowing} textButton={!isFollowing ? "Seguir" : "Desseguir" }></Button>
             </OngLi>
         )
 }

@@ -45,7 +45,7 @@ function OurTeam() {
             <Allimages>
                 <DivImg>
                     <Images src= {Gabi} />
-                    <Title size={'20px'} weight={600}>Gabielle</Title>
+                    <Title size={'20px'} weight={600}>Gabrielle</Title>
                 </DivImg>
 
                 <DivImg>

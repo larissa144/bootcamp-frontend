@@ -14,9 +14,9 @@ const ButtonLayout = styled.button`
     transition: .4s ease;
 `
 
-const Button = ({textButton, width, height, active}) =>  {
+const Button = ({textButton, width, height, active, onClick}) =>  {
     return (
-        <ButtonLayout width={width} height={height} active={active}>{textButton}</ButtonLayout>
+        <ButtonLayout onClick={onClick} width={width} height={height} active={active}>{textButton}</ButtonLayout>
     )
 }
 
