@@ -4,10 +4,12 @@ import { OngLi, OngImgContainer, OngImg } from './styled'
 import axios from 'axios';
 import defaultImage from '../../assets/img/ong1.png';
 import { useKeycloak } from '@react-keycloak/web'
+import { Link } from 'react-router-dom';
 
 function OngItem({ id, name, category, isFollowing, ongs, setOngs }) {
     const { keycloak, initialized } = useKeycloak()
     const [img, setImg] = useState(null);
+    
 
     useEffect(async () => {
         if(initialized) {
@@ -47,8 +49,8 @@ function OngItem({ id, name, category, isFollowing, ongs, setOngs }) {
                 newItem.situacao = seguir ? "SEGUINDO" : "NAO_SEGUINDO";
                 return newItem;
             })
-            console.log({newOngs})
             setOngs(newOngs)
+            console.log({result})
 
         } catch (error) {
         }
@@ -56,9 +58,13 @@ function OngItem({ id, name, category, isFollowing, ongs, setOngs }) {
 
     return (
             <OngLi key={id}>
-                <span>{name}</span>
+                <Link to={`/ongs/${id}`}>
+                    <span>{name}</span>
+                </Link>
                 <OngImgContainer>
-                    <OngImg src={img} />
+                    <Link to={`/ongs/${id}`}>
+                        <OngImg src={img} />
+                    </Link>
                 </OngImgContainer>
                 <span>{category}</span>
                 <Button onClick={toggleFollow} width={"120px"} active={isFollowing} textButton={!isFollowing ? "Seguir" : "Desseguir" }></Button>
