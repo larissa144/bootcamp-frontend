@@ -4,7 +4,7 @@ import Ongs from '../ongs/Ongs';
 import CriarNovaOng from '../ong/criarNovaOng';
 import Cadastro from '../cadastro/cadastro';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import LandingPage from '../landing-page/landing-page';
+import LandingPage from '../../pages/landing-page';
 import Perfil from "../perfil/perfil"
 import { ReactKeycloakProvider } from '@react-keycloak/web'
 import keycloak from '../../utils/keycloak'
