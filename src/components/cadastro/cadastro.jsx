@@ -85,6 +85,12 @@ function Cadastro() {
                             width={'85%'} 
                             height={'8%'}
                         />
+                            <Input
+                            // onChange={handleChangeEmail}
+                            textInput='E-mail'
+                            width={'85%'} 
+                            height={'8%'}
+                        />
                            <Input
                             // onChange={handleChangeEmail}
                             textInput='Telefone'
