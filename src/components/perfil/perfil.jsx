@@ -23,48 +23,48 @@ function Perfil(props) {
                     Authorization: "Bearer " + keycloak.token
                 }
             });
-
-            setOngData(result.data);
+            console.log(result.data);
+            setOngData(result.data)
         }
-    }, [ initialized ]);
+      }, [initialized]);
 
-return (
-  <>
-    <Header />
-    <Main>
-      <PerfilContent>
+  return (
+    <>
+      <Header />
+      <Main>
+        <PerfilContent>
 
-        <PerfilOng
-          name={ongData.nome}
-          img={i1}
-          tel={"(11) 99999-9999"}
-          email={"email@email.com"}
-          address={"Rua das Crianças, 123"}
-          category={"Crianças e Adolescentes"}
-        />
+          <PerfilOng
+            name={ongData.nome ? ongData.nome : "Nome da ONG"}
+            img={i1}
+            tel={ongData.contato.telefone ? ongData.contato.telefone : "Telefone da ONG"}
+            email={ongData.contato.email ? ongData.contato.email : "Email da ONG"}
+            address={ongData.contato.endereco ? ongData.contato.endereco : "Endereço da ONG"}
+            category={"Crianças e Adolescentes"}
+          />
 
-      </PerfilContent>
-      <Divisor></Divisor>
+        </PerfilContent>
+        <Divisor></Divisor>
 
-      <PerfilSocialMedias>
+        <PerfilSocialMedias>
 
-        <MidiaSocial
-          img={i1}
-          user={"@instagram"}
-        />
-        <MidiaSocial
-          img={i1}
-          user={"@instagram"}
-        />
-        <MidiaSocial
-          img={i1}
-          user={"@instagram"}
-        />
+          <MidiaSocial
+            img={i1}
+            user={"@instagram"}
+          />
+          <MidiaSocial
+            img={i1}
+            user={"@instagram"}
+          />
+          <MidiaSocial
+            img={i1}
+            user={"@instagram"}
+          />
 
-      </PerfilSocialMedias>
-    </Main>
-  </>
-);
+        </PerfilSocialMedias>
+      </Main>
+    </>
+  );
 }
 
 export default Perfil
