@@ -4,10 +4,12 @@ import { OngLi, OngImgContainer, OngImg } from './styled'
 import axios from 'axios';
 import defaultImage from '../../assets/img/ong1.png';
 import { useKeycloak } from '@react-keycloak/web'
+import { Link } from 'react-router-dom';
 
-function OngItem({ id, name, category, isFollowing }) {
+function OngItem({ id, name, category, isFollowing, ongs, setOngs }) {
     const { keycloak, initialized } = useKeycloak()
     const [img, setImg] = useState(null);
+    
 
     useEffect(async () => {
         if(initialized) {
@@ -25,14 +27,47 @@ function OngItem({ id, name, category, isFollowing }) {
         }
     }, [ initialized ])
 
+    const toggleFollow = async () => {
+        const seguir = !isFollowing;
+        try {
+            const result = await axios.put(`http://ec2-3-17-26-83.us-east-2.compute.amazonaws.com:8080/ongs/${id}/seguir`,
+                {
+                    seguir
+                },
+                {
+                    headers: {
+                        Authorization: "Bearer " + keycloak.token
+                    },
+                }
+            );
+
+            const newOngs = ongs.map(item => {
+                if(item.id !== id){
+                    return item
+                }
+                const newItem = { ...item };
+                newItem.situacao = seguir ? "SEGUINDO" : "NAO_SEGUINDO";
+                return newItem;
+            })
+            setOngs(newOngs)
+            console.log({result})
+
+        } catch (error) {
+        }
+    }
+
     return (
             <OngLi key={id}>
-                <span>{name}</span>
+                <Link to={`/ongs/${id}`}>
+                    <span>{name}</span>
+                </Link>
                 <OngImgContainer>
-                    <OngImg src={img} />
+                    <Link to={`/ongs/${id}`}>
+                        <OngImg src={img} />
+                    </Link>
                 </OngImgContainer>
                 <span>{category}</span>
-                <Button width={"120px"} active={isFollowing} textButton={!isFollowing ? "Seguir" : "Desseguir" }></Button>
+                <Button onClick={toggleFollow} width={"120px"} active={isFollowing} textButton={!isFollowing ? "Seguir" : "Desseguir" }></Button>
             </OngLi>
         )
 }

@@ -101,6 +101,12 @@ const OngImgContainer = styled.div`
     justify-content: center;
     height: 250px;
     padding: 10px 0;
+
+    > a {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
 `
 const OngImg = styled.img`
     max-width: 90%;

@@ -15,7 +15,7 @@ function Ongs() {
     const [ page, setPage ] = useState(1);
     const [ hasPrevious, setHasPrevious ] = useState(false);
     const [ hasNext, setHasNext ] = useState(true);
-    const { keycloak, initialized } = useKeycloak()
+    const { keycloak, initialized } = useKeycloak();
 
     useEffect(() => {
         console.log({page})
@@ -32,6 +32,10 @@ function Ongs() {
 
             if(searchName) {
                 params.nome = searchName;
+            }
+            
+            if(category) {
+                params.categoria = category;
             }
 
             const result = await axios.get("http://ec2-3-17-26-83.us-east-2.compute.amazonaws.com:8080/ongs", {
@@ -55,7 +59,7 @@ function Ongs() {
                     <Title title={"Listagem de instituições cadastradas"} />
                     <Filters category={category} setCategory={setCategory} searchName={searchName} setSearchName={setSearchName} page={page} setPage={setPage} />
                 </header>
-                <OngList ongs={ongs} page={page} setPage={setPage} hasPrevious={hasPrevious} hasNext={hasNext} />
+                <OngList ongs={ongs} setOngs={setOngs} page={page} setPage={setPage} hasPrevious={hasPrevious} hasNext={hasNext} />
             </Main>
             <Footer />
         </>
