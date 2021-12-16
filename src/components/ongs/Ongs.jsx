@@ -35,7 +35,7 @@ function Ongs() {
             }
             
             if(category) {
-                params.categoria = category;
+                params.nomeCategoria = category;
             }
 
             const result = await axios.get("http://ec2-3-17-26-83.us-east-2.compute.amazonaws.com:8080/ongs", {

@@ -21,6 +21,10 @@ function Filters({ category, setCategory, searchName, setSearchName, page, setPa
         }
     }, [ initialized ]);
 
+    useEffect(async () => {
+        setPage(1)
+    }, [ categories, searchName ]);
+
     return (
         <Filter>
             <CategoryFilter onClick={() => {
@@ -34,7 +38,7 @@ function Filters({ category, setCategory, searchName, setSearchName, page, setPa
                     setCategory(e.target.value)
                 }}>
                 <option value="" disabled>Selecione uma categoria</option>
-                { categories.map(item => (<option value={item.id}>{item.nome}</option>)) }
+                { categories.map(item => (<option key={item.nome} value={item.nome}>{item.nome}</option>)) }
             </SelectFilter>
             <NameFilter>
                 <Input placeholder="Buscar por nome" width="300px" value={searchName} onChange={(e) => {
