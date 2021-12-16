@@ -27,7 +27,7 @@ function Ongs() {
         if(initialized) {
             const params = {
                 pagina: page,
-                qtdPorPagina: 6,
+                qtdPorPagina: 1,
             }
 
             if(searchName) {

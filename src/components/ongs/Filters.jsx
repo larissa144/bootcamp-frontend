@@ -21,10 +21,6 @@ function Filters({ category, setCategory, searchName, setSearchName, page, setPa
         }
     }, [ initialized ]);
 
-    useEffect(async () => {
-        setPage(1)
-    }, [ categories, searchName ]);
-
     return (
         <Filter>
             <CategoryFilter onClick={() => {
@@ -35,6 +31,7 @@ function Filters({ category, setCategory, searchName, setSearchName, page, setPa
                 <CategoryFilterSpan>Filtrar por categoria</CategoryFilterSpan>
             </CategoryFilter>
             <SelectFilter value={category} show={showCategories} onChange={(e) => {
+                    setPage(1)
                     setCategory(e.target.value)
                 }}>
                 <option value="" disabled>Selecione uma categoria</option>
@@ -42,6 +39,7 @@ function Filters({ category, setCategory, searchName, setSearchName, page, setPa
             </SelectFilter>
             <NameFilter>
                 <Input placeholder="Buscar por nome" width="300px" value={searchName} onChange={(e) => {
+                    setPage(1)
                     setSearchName(e.target.value)
                 }}/>
                 <FiSearch size={23} color="490D46" style={{
