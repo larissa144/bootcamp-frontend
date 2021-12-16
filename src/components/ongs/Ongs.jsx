@@ -9,12 +9,12 @@ import axios from 'axios';
 import { useKeycloak } from '@react-keycloak/web'
 
 function Ongs() {
-    const [ category, setCategory ] = useState([]);
+    const [ category, setCategory ] = useState("");
     const [ searchName, setSearchName ] = useState("");
     const [ ongs, setOngs ] = useState([]);
     const [ page, setPage ] = useState(1);
     const [ hasPrevious, setHasPrevious ] = useState(false);
-    const [ hasNext, setHasNext ] = useState(true);
+    const [ hasNext, setHasNext ] = useState(false);
     const { keycloak, initialized } = useKeycloak();
 
     useEffect(() => {
@@ -44,7 +44,7 @@ function Ongs() {
                 },
                 params
             });
-            console.log(result.data);
+            console.log("***", result.data);
             setHasPrevious(result.data.temPaginaAnterior);
             setHasNext(result.data.temProximaPagina);
             setOngs([ ...result.data.content ]);

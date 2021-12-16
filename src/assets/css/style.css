@@ -16,6 +16,10 @@ body, html {
     font-family: Roboto;
 }
 
+main {
+    min-height: 100vh;
+}
+
 /*CSS Header*/
 .app-header {
     align-items: center;
