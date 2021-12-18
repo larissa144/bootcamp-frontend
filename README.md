@@ -10,7 +10,7 @@ Projeto front-end do bootcamp da faculdade impacta da turma de engenharia de sof
 
 # Startando o projeto
 
-* rodar o comando: git clone https://github.com/larissa144/bootcamp-frontend
+* rodar o comando: git clone https://github.com/vinicius-schulz/bootcamp-frontend
 * entrar dentro da pasta: cd bootcamp-frontend
 * rodar o comando: npm i 
 * rodar o comando: npm start
