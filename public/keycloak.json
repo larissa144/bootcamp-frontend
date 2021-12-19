@@ -1,6 +1,6 @@
 {
-    "realm": "bootcamp",
-    "auth-server-url": "http://ec2-3-141-196-157.us-east-2.compute.amazonaws.com:8090/auth",
+    "realm": "idonation",
+    "auth-server-url": "http://ec2-3-141-196-157.us-east-2.compute.amazonaws.com:9090/auth",
     "ssl-required": "none",
     "resource": "idonation-web",
     "public-client": true,
