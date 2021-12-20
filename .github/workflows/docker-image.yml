@@ -42,6 +42,8 @@ jobs:
 
       - name: Push image to Docker Hub Container Registry
         run: |
+          VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
+          [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')        
           docker tag $IMAGE_NAME $CONTAINER_NAME:$VERSION
           docker push $CONTAINER_NAME:$VERSION
 
@@ -55,6 +57,8 @@ jobs:
 
       - name: Deploy image to AWS
         run: |
+          VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
+          [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')        
           mkdir "${HOME}/.ssh"
           echo "${{secrets.USER_SSH_PRIVATE_KEY}}" > "${HOME}/.ssh/id_rsa"
           chmod 700 "${HOME}/.ssh/id_rsa"
@@ -74,6 +78,8 @@ jobs:
 
       - name: Run application at AWS
         run: |
+          VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
+          [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')        
           mkdir "${HOME}/.ssh"
           echo "${{secrets.USER_SSH_PRIVATE_KEY}}" > "${HOME}/.ssh/id_rsa"
           chmod 700 "${HOME}/.ssh/id_rsa"
