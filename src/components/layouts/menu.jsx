@@ -13,7 +13,6 @@ const Menu = () => {
                 <li className="app-menu__item">
                     <Link onClick={(e) => {
                         e.preventDefault();
-                        console.log(window.location.hostname)
                         keycloak.logout({ redirectUri : `${ window.location.protocol || "http" }//${window.location.host}/`});
                     }}className="app-menu__link" to="/"><FiLogOut /> Sair </Link>
                 </li>
