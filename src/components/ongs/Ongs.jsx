@@ -18,9 +18,9 @@ function Ongs() {
     const { keycloak, initialized } = useKeycloak();
 
     useEffect(() => {
-        console.log({page})
-        console.log({searchName})
-        console.log({category})
+        // console.log({page})
+        // console.log({searchName})
+        // console.log({category})
     }, [ page, searchName, category ]);
 
     useEffect(async () => {
@@ -44,7 +44,6 @@ function Ongs() {
                 },
                 params
             });
-            console.log("***", result.data);
             setHasPrevious(result.data.temPaginaAnterior);
             setHasNext(result.data.temProximaPagina);
             setOngs([ ...result.data.content ]);
