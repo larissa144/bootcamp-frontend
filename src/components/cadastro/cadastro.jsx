@@ -50,8 +50,11 @@ const DivButton = styled.div`
   height: 20%;
 `
 const Title = styled.p`
-  color: #5A5657;
-  font-size: 20px;
+    color: #5A5657;
+    font-size: 20px;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 20px;
 `
 const Subtitle = styled.p`
   color: #5A5657;
@@ -67,7 +70,7 @@ function Cadastro() {
             </DivImg>
 
             <DivCard>
-                <Card width={'350px'} height={'550px'}> 
+                <Card width={'50%'}> 
                     <DivTitles>
                         <Title>Cadastre-se</Title>
                         <Subtitle>É muito simples e fácil</Subtitle>
@@ -115,11 +118,11 @@ function Cadastro() {
                             width={'85%'} 
                             height={'8%'}
                         />
-                           <InputFile
+                           {/* <InputFile
                             // onChange={handleChangeEmail}
                             // width={'85%'} 
                             // height={'8%'}
-                        />
+                        /> */}
                     </DivInput>
                     <DivButton>
                         <Button 

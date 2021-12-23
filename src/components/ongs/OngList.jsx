@@ -13,7 +13,9 @@ function OngList({ ongs, setOngs, page, setPage, hasNext, hasPrevious }) {
                     )
                 }) }
             </OngsUl>
-            <Pagination page={page} setPage={setPage} hasPrevious={hasPrevious} hasNext={hasNext} />
+            {
+                ongs.length > 0 && (  <Pagination page={page} setPage={setPage} hasPrevious={hasPrevious} hasNext={hasNext} /> )
+            }
         </>
     );
 }

@@ -5,19 +5,19 @@ import Upload from '../../assets/img/upload.png'
 const InputLayout = styled.input`
     width: ${props => props.width};
     height: ${props => props.height};
-    padding: 14px 10px;
+    padding: 10px;
     background: #ffffff;
-    border-radius: 12px;
+    border-radius: 16px;
     text-align: center;
-    border: 1px solid rgba(73, 13, 70, 0.51);
-    margin-top: 13px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border: none;
+    margin-top: 10px;
+    box-shadow: 1px 1px 6px 3px rgb(0 0 0 / 20%);
     text-align: left;
     ::placeholder {
        color: rgba(73, 13, 70, 0.51);
     }
    :focus {
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: 1px 1px 6px 3px rgb(0 0 0 / 25%);
     outline: 0;
     }
 `
