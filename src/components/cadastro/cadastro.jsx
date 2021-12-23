@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import '../../assets/css/style.css'
 import styled from 'styled-components'
 import LogoImage from '../../assets/img/logo-branco.png'
@@ -6,6 +6,9 @@ import { ColorBody } from '../layouts/background-color'
 import { Card } from '../layouts/card'
 import Button from '../layouts/button'
 import Input, {InputFile} from '../layouts/input'
+import { handleChange } from '../../utils/handleChange';
+import axios from "axios";
+import { useNavigate } from 'react-router-dom';
 
 const Logo = styled.img`
   height: 13%;
@@ -61,7 +64,36 @@ const Subtitle = styled.p`
   font-size: 15px;
   margin-top: 2px;
 `
+
+const Message = styled.p`
+    padding: 5px;
+`
+
 function Cadastro() {
+    const navigate = useNavigate();
+    const [ name, setName ] = useState("");
+    const [ cpf, setCpf ] = useState("");
+    const [ email, setEmail ] = useState("");
+    const [ phone, setPhone ] = useState("");
+    const [ address, setAddress ] = useState("");
+    const [ password, setPassword ] = useState("");
+    const [ passwordConfirmation, setPasswordConfirmation ] = useState("");
+    const [ message, setMessage ] = useState("");
+
+    const register = async () => {
+        try {
+            await axios.post("http://ec2-3-17-26-83.us-east-2.compute.amazonaws.com:8080/usuarios", {
+                nome: name,
+                email: email,
+                senha: password,
+                cpf
+            })
+            alert("Cadastro realizado");
+            navigate("/login")
+        } catch (error) {
+            console.log({error})
+        }
+    }
 
     return(
         <ColorBody>
@@ -77,60 +109,68 @@ function Cadastro() {
                     </DivTitles>
                     <DivInput>
                         <Input
-                            // onChange={handleChangeEmail}
+                            onChange={handleChange(setName)}
+                            value={name}
                             textInput='Nome completo'
                             width={'85%'} 
                             height={'8%'}
                         />
                            <Input
-                            // onChange={handleChangeEmail}
+                            onChange={handleChange(setCpf)}
+                            value={cpf}
                             textInput='CPF'
                             width={'85%'} 
                             height={'8%'}
                         />
                             <Input
-                            // onChange={handleChangeEmail}
+                            onChange={handleChange(setEmail)}
+                            value={email}
                             textInput='E-mail'
                             width={'85%'} 
                             height={'8%'}
                         />
                            <Input
-                            // onChange={handleChangeEmail}
+                            onChange={handleChange(setPhone)}
+                            value={phone}
                             textInput='Telefone'
                             width={'85%'} 
                             height={'8%'}
                         />
                            <Input
-                            // onChange={handleChangeEmail}
+                            onChange={handleChange(setAddress)}
+                            value={address}
                             textInput='Endereço'
                             width={'85%'} 
                             height={'8%'}
                         />
                            <Input
-                            // onChange={handleChangeEmail}
+                            onChange={handleChange(setPassword)}
+                            value={password}
                             textInput='Senha'
                             width={'85%'} 
                             height={'8%'}
                         />
-                           <Input
+                           {/* <Input
                             // onChange={handleChangeEmail}
                             textInput='Confirme a senha'
                             width={'85%'} 
                             height={'8%'}
                         />
-                           {/* <InputFile
+                           <InputFile
                             // onChange={handleChangeEmail}
                             // width={'85%'} 
                             // height={'8%'}
                         /> */}
                     </DivInput>
                     <DivButton>
-                        <Button 
+                        <Button
+                            onClick={register} 
                             textButton='Cadastrar' 
                             width={'45%'} 
                             height={'25%'}
                         />
                     </DivButton>
+                    { message.length > 0 && <Message>Test</Message>}
                 </Card>
             </DivCard>
         </ColorBody>
