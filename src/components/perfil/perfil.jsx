@@ -20,7 +20,7 @@ function Perfil(props) {
   const [imgRedeSocial, setImgRedeSocial] = useState(null);
   const [RedeSocial, setRedeSocial] = useState({});
   const [IdRedeSocial, setIdRedeSocial] = useState({});
-  
+
   let { id } = useParams();
 
   useEffect(async () => {
