@@ -20,7 +20,7 @@ function App() {
                     <Route path="/feed" element={<PrivateRoute children={<Ongs />} />} />
                     <Route path="/ongs" element={<PrivateRoute children={<Ongs />} />} />
                     <Route path="/ongs/:id" element={<PrivateRoute children={<Perfil />} />} />
-                    <Route path="/criarNovaOng" element={<PrivateRoute children={<CriarNovaOng />} />} />
+                    <Route path="/ongs/cadastro" element={<PrivateRoute children={<CriarNovaOng />} />} />
                     <Route path="/cadastro" element={<Cadastro />} />
                 </Routes>
             </BrowserRouter>
