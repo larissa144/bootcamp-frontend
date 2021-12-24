@@ -32,7 +32,6 @@ const DivTitles = styled.div`
   align-items: center;
   width: 100%;
   height: 20%;
-  margin-bottom: 0;
 `
 const DivInput = styled.div`
   margin-bottom: auto;
@@ -49,16 +48,17 @@ const DivButton = styled.div`
   height: 20%;
 `
 const Title = styled.p`
-  color: #5A5657;
-  font-size: 30px;
-  margin-bottom: 0px;
+    color: #5A5657;
+    font-size: 20px;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 20px;
 `
+
 const Subtitle = styled.p`
   color: #5A5657;
   font-size: 15px;
-  margin-top: 0.10em;
-  text-indent: 0;
-  padding-right: 8em;
+  margin-top: 2px;
 `
 
 
@@ -73,7 +73,7 @@ function CriarNovaOng() {
               </DivImg>
               
               <DivCard>
-                  <Card width={'350px'} height={'550px'}> 
+                   <Card width={'50%'}> 
                       <DivTitles>
                           <Title>Criar uma nova ONG</Title>
                           <Subtitle>É muito simples e fácil.</Subtitle>
@@ -84,36 +84,36 @@ function CriarNovaOng() {
                               // onChange={handleChangeEmail}
                               icon={FiUser}
                               textInput='Nome da ONG'
-                              width={'95%'} 
-                              height={'12%'}
+                              width={'85%'} 
+                              height={'8%'}
                           />
                             <Input
                               // onChange={handleChangeEmail}
                               icon={FiMail}
                               textInput='E-mail'
-                              width={'95%'} 
-                              height={'12%'}
+                              width={'85%'} 
+                              height={'8%'}
                           />
                             <Input
                               // onChange={handleChangeEmail}
                               icon={FiPhone}
                               textInput='Telefone'
-                              width={'95%'} 
-                              height={'12%'}
+                              width={'85%'} 
+                              height={'8%'}
                           />
                             <Input
                               // onChange={handleChangeEmail}
                               icon={FiMapPin}
                               textInput='Endereço'
-                              width={'95%'} 
-                              height={'12%'}
+                              width={'85%'} 
+                              height={'8%'}
                           />
                             <Input
                               // onChange={handleChangeEmail}
                               icon={FiFileText}
                               textInput='Categoria'
-                              width={'95%'} 
-                              height={'12%'}
+                              width={'85%'} 
+                              height={'8%'}
                           />
                       </DivInput>
                       <DivButton>

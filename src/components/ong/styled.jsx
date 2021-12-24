@@ -17,13 +17,14 @@ const InputLayout = styled.input`
 
 const InputContainer = styled.div`
     background: #ffffff;
-    border-radius: 12px;
-    border: 1px solid rgba(73, 13, 70, 0.51);
+    border-radius: 16px;
     display: flex;
     align-items: center;
-    margin-top: 8px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: rgb(0 0 0 / 20%) 1px 1px 6px 3px;
     padding-left: 8px;
+    width: 90%; 
+    margin: 6px 5%; 
+    height: 37px;
 `
 
 const Input = ({ textInput, width, height, onChange, icon: Icon, ...repeatInput }) => {
@@ -31,7 +32,7 @@ const Input = ({ textInput, width, height, onChange, icon: Icon, ...repeatInput 
     return (
         <>
             <InputContainer>
-                {Icon && <Icon size={23} color="490D46" />}
+                {Icon && <Icon size={18} color="490D46" />}
                 <InputLayout {...repeatInput} width={width} height={height} type='text' placeholder={textInput} onChange={onChange} />
             </InputContainer>
         </>
