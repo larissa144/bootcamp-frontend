@@ -80,8 +80,23 @@ function Cadastro() {
     const [ passwordConfirmation, setPasswordConfirmation ] = useState("");
     const [ message, setMessage ] = useState("");
 
+    useEffect(() => {
+        setMessage("");
+    }, [ name, cpf, email, phone, address, password ]);
+    
+    useEffect(() => {
+        if(password === passwordConfirmation) {
+            setMessage("");
+        } else {
+            setMessage("As senhas não são iguais.");
+        }
+    }, [ passwordConfirmation ]);
+
     const register = async () => {
         try {
+            if(password !== passwordConfirmation) {
+                return
+            }
             await axios.post("http://ec2-3-17-26-83.us-east-2.compute.amazonaws.com:8080/usuarios", {
                 nome: name,
                 email: email,
@@ -91,7 +106,10 @@ function Cadastro() {
             alert("Cadastro realizado");
             navigate("/login")
         } catch (error) {
-            console.log({error})
+            if(error.response && error.response.data && error.response.data.messages) {
+                setMessage(error.response.data.messages[0]);
+                return
+            }
         }
     }
 
@@ -144,23 +162,21 @@ function Cadastro() {
                             height={'8%'}
                         />
                            <Input
+                            type={"password"}
                             onChange={handleChange(setPassword)}
                             value={password}
                             textInput='Senha'
                             width={'85%'} 
                             height={'8%'}
-                        />
-                           {/* <Input
-                            // onChange={handleChangeEmail}
+                            />
+                            <Input
+                            type={"password"}
+                            onChange={handleChange(setPasswordConfirmation)}
+                            value={passwordConfirmation}
                             textInput='Confirme a senha'
                             width={'85%'} 
                             height={'8%'}
                         />
-                           <InputFile
-                            // onChange={handleChangeEmail}
-                            // width={'85%'} 
-                            // height={'8%'}
-                        /> */}
                     </DivInput>
                     <DivButton>
                         <Button
