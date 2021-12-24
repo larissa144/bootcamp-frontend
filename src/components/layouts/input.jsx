@@ -17,7 +17,7 @@ const InputLayout = styled.input`
        color: rgba(73, 13, 70, 0.51);
     }
    :focus {
-    box-shadow: 1px 1px 6px 3px rgb(0 0 0 / 25%);
+    box-shadow: 1px 1px 6px 3px rgb(137 41 140 / 47%);
     outline: 0;
     }
 `

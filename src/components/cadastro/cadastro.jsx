@@ -170,7 +170,7 @@ function Cadastro() {
                             height={'25%'}
                         />
                     </DivButton>
-                    { message.length > 0 && <Message>Test</Message>}
+                    { message.length > 0 && (<Message>{message}</Message>)}
                 </Card>
             </DivCard>
         </ColorBody>
