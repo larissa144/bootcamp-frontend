@@ -97,12 +97,14 @@ function Cadastro() {
             if(password !== passwordConfirmation) {
                 return
             }
+            setMessage("Carregando...");
             await axios.post("http://ec2-3-17-26-83.us-east-2.compute.amazonaws.com:8080/usuarios", {
                 nome: name,
                 email: email,
                 senha: password,
                 cpf
             })
+            setMessage("");
             alert("Cadastro realizado");
             navigate("/login")
         } catch (error) {
@@ -110,6 +112,7 @@ function Cadastro() {
                 setMessage(error.response.data.messages[0]);
                 return
             }
+            setMessage("Erro desconhecido, tente novamente.");
         }
     }
 
@@ -118,7 +121,6 @@ function Cadastro() {
             <DivImg>
                 <Logo src={LogoImage}/>
             </DivImg>
-
             <DivCard>
                 <Card width={'50%'}> 
                     <DivTitles>
