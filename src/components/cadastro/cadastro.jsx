@@ -146,6 +146,7 @@ function Cadastro() {
                             onChange={handleChange(setEmail)}
                             value={email}
                             textInput='E-mail'
+                            type="email"
                             width={'85%'} 
                             height={'8%'}
                         />
@@ -164,7 +165,7 @@ function Cadastro() {
                             height={'8%'}
                         />
                            <Input
-                            type={"password"}
+                            type="password"
                             onChange={handleChange(setPassword)}
                             value={password}
                             textInput='Senha'
