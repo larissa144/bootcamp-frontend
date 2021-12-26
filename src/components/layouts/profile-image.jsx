@@ -61,7 +61,6 @@ const ProfileImage = ( {img, setImg} ) => {
             if(!newProfileImg) return
             const formData = new FormData();
             formData.append('arquivo', newProfileImg)
-            console.log({formData})
             const config = {
                 headers: {
                     'content-type': 'multipart/form-data',
@@ -69,11 +68,10 @@ const ProfileImage = ( {img, setImg} ) => {
                 }
             }
             await axios.put(
-                `http://localhost:8005/usuarios/upload-imagem`,
+                `http://ec2-3-17-26-83.us-east-2.compute.amazonaws.com:8080/usuarios/upload-imagem`,
                 formData,
                 config
             );
-
             const fileBase64 = await getBase64(newProfileImg);
             setImg(fileBase64);
         } catch (error) {
