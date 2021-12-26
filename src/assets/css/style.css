@@ -43,12 +43,13 @@ main {
 .app-menu__link {
     color: #ffffff;
     font-family: sans-serif;
-    margin-right: 1rem;
+    margin-right: 2rem;
     text-decoration: none;
-    transition: .4s ease;
+    transform: .6s;
+    display: block;
 }
 
 .app-menu__link:hover {
-    font-weight: bold;
+    transform: scale(1.1);
 }
 
