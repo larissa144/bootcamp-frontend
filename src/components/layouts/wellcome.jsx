@@ -41,7 +41,7 @@ const Wellcome = ( ) =>{
 
     return(
         <WellcomeDiv>
-            <ProfileImage img={img} />
+            <ProfileImage img={img} setImg={setImg} />
             <Span>Bem vindo, {name}.</Span>
         </WellcomeDiv>
     )

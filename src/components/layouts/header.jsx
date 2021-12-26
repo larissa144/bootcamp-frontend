@@ -4,8 +4,6 @@ import '../../assets/css/style.css';
 import Wellcome from './wellcome';
 
 const Header = () => {
-    
-
     return(
         <header className="app-header">
             <Wellcome />
