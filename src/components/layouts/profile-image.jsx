@@ -75,7 +75,7 @@ const ProfileImage = ( {img, setImg} ) => {
             const fileBase64 = await getBase64(newProfileImg);
             setImg(fileBase64);
         } catch (error) {
-            console.log(error)
+            alert("Erro ao trocar imagem de perfil, tente outro arquivo.")
         }
     }, [ newProfileImg ])
 
