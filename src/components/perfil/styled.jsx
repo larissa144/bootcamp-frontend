@@ -51,20 +51,21 @@ const OngImg = styled.img`
     height: 230px;
 `
 
+const OngImgMidiaContent = styled.div`
+    aling-items: center;
+
+`
+
 const OngLi = styled.div`
-    display: flex;
-    width: 300px;
-    justify-content: center;
     align-items: center;
+    margin-bottom: 40px;  
 `
 
 const OngImgMidiaContainer = styled.div`
-    width: 100%;
 `
 
 const OngImgMidia = styled.img`
     max-height: 40px;
-    height: 40px;
 `
 
 export {
@@ -75,6 +76,7 @@ export {
   OngInfos,
   OngImgContainer,
   OngImg,
+  OngImgMidiaContent,
   OngImgMidiaContainer,
   OngImgMidia,
   OngLi
