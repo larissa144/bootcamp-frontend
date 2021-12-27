@@ -111,7 +111,7 @@ const OngImgContainer = styled.div`
 const OngImg = styled.img`
     max-width: 90%;
     max-height: 200px;
-    height: 230px;
+    border-radius: 50%;
 `
 
 export { Main, Filter, CategoryFilter, CategoryFilterSpan, Input, OngImgContainer, NameFilter, SelectFilter, OngImg, OngsUl, OngLi }
