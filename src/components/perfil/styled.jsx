@@ -64,12 +64,35 @@ const OngImg = styled.img`
     border-radius: 50%;
 `
 
+const SocialMediaListContainer = styled.ul`
+    display: flex;
+    flex-wrap: wrap
+`
+    
+const SocialMediaListItemContainer = styled.li`
+    display: flex;
+    width: 100%;
+    height: 60px;
+    margin-bottom: 20px;
+    line-height: 60px;
+    color: rgb(0 0 0 / 48%);
+`
+
+const SocialMediaImg = styled.img`
+    width: 50px;
+    height: 50px;
+    margin: 5px 20px 5px 5px
+`
+
 export {
-  Main,
-  PerfilContent,
-  PerfilSocialMedias,
-  Divisor,
-  OngInfos,
-  OngImgContainer,
-  OngImg
+    SocialMediaImg,
+    SocialMediaListContainer,
+    SocialMediaListItemContainer,
+    Main,
+    PerfilContent,
+    PerfilSocialMedias,
+    Divisor,
+    OngInfos,
+    OngImgContainer,
+    OngImg
 }
