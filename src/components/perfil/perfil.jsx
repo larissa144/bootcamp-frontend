@@ -26,7 +26,15 @@ function Perfil() {
                     }
                 });
                 setOngData(ongResult.data);
-                
+            } catch (error) {
+                console.log(error);
+            }
+        }
+    }, [initialized]);
+
+    useEffect(async () => {
+        if (initialized) {
+            try {
                 const socialMediaResult = await axios.get(`http://ec2-3-17-26-83.us-east-2.compute.amazonaws.com:8080/ongs/${id}/redes-sociais`, {
                     headers: {
                     Authorization: "Bearer " + keycloak.token
@@ -35,7 +43,15 @@ function Perfil() {
                 });
                 console.log("redes_sociais", { data: socialMediaResult.data.content });
                 setSocialMedias(socialMediaResult.data.content);
+            } catch (error) {
+                console.log(error);
+            }
+        }
+    }, [initialized]);
 
+    useEffect(async () => {
+        if (initialized) {
+            try {
                 const imgResult = await axios.get(`http://ec2-3-17-26-83.us-east-2.compute.amazonaws.com:8080/ongs/${id}/download-imagem`, {
                     headers: {
                     Authorization: "Bearer " + keycloak.token
@@ -47,7 +63,7 @@ function Perfil() {
                 console.log(error);
             }
         }
-    }, [initialized])
+    }, [initialized]);
 
     return (
         <>
