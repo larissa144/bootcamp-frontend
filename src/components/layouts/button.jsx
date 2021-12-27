@@ -7,7 +7,7 @@ const ButtonLayout = styled.button`
     color: #ffffff;
     border: none;
     border-radius: 20px;
-    margin-top: 13px;
+    margin-top: 20px;
     text-align: center;
     cursor: pointer;
     padding: 10px 0px;

@@ -11,6 +11,12 @@ const Menu = () => {
         <nav className="app-menu">
             <ul className="app-menu__list">
                 <li className="app-menu__item">
+                    <Link className="app-menu__link" to="/feed"> Início </Link>
+                </li>
+                <li className="app-menu__item">
+                    <Link className="app-menu__link" to="/ongs/cadastro"> Cadastrar uma Ong </Link>
+                </li>
+                <li className="app-menu__item">
                     <Link onClick={(e) => {
                         e.preventDefault();
                         keycloak.logout({ redirectUri : `${ window.location.protocol || "http" }//${window.location.host}/`});

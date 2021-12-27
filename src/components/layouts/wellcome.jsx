@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react'
 import { useKeycloak } from '@react-keycloak/web';
 import axios from 'axios';
 import ProfileImage from './profile-image'
+import defaultProfileImage from "../../assets/img/default-profile.jpg"
 
 const WellcomeDiv = styled.div`
     display: flex;
@@ -18,7 +19,7 @@ const Span = styled.span`
 const Wellcome = ( ) =>{
     const { keycloak, initialized } = useKeycloak()
     const [ name, setName ] = useState("");
-    const [ img, setImg ] = useState(null);
+    const [ img, setImg ] = useState(defaultProfileImage);
 
     useEffect(async () => {
         if(initialized) {
@@ -40,7 +41,7 @@ const Wellcome = ( ) =>{
 
     return(
         <WellcomeDiv>
-            <ProfileImage img={img} />
+            <ProfileImage img={img} setImg={setImg} />
             <Span>Bem vindo, {name}.</Span>
         </WellcomeDiv>
     )

@@ -10,5 +10,5 @@ export const Card = styled.div`
     flex-direction: column;
     justify-content: center;
     display: flex;
-    padding: 12px;
+    padding: 30px 0;
 `
