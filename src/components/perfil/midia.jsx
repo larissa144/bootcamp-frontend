@@ -8,7 +8,7 @@ function MidiaSocial({ img, user }) {
         <OngImgMidiaContainer>
           <OngImgMidia src={img} />
         </OngImgMidiaContainer>
-        <span>{user}</span>
+        {/* <span>{user}</span> */}
       </OngLi>
     </OngImgMidiaContent>
   )
