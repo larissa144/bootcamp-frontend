@@ -64,23 +64,6 @@ const OngImg = styled.img`
     border-radius: 50%
 `
 
-const OngImgMidiaContent = styled.div`
-    aling-items: center;
-
-`
-
-const OngLi = styled.div`
-    align-items: center;
-    margin-bottom: 40px;  
-`
-
-const OngImgMidiaContainer = styled.div`
-`
-
-const OngImgMidia = styled.img`
-    max-height: 40px;
-`
-
 export {
   Main,
   PerfilContent,
@@ -88,9 +71,5 @@ export {
   Divisor,
   OngInfos,
   OngImgContainer,
-  OngImg,
-  OngImgMidiaContent,
-  OngImgMidiaContainer,
-  OngImgMidia,
-  OngLi
+  OngImg
 }
