@@ -1,0 +1,5 @@
+{
+    "url": "http://3.141.196.157:9090/auth",
+    "realm": "idonation",
+    "clientId": "idonation-web"
+}

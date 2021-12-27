@@ -1,0 +1,91 @@
+name: Docker
+
+on:
+  push:
+
+    # Publish `v1.2.3` tags as releases.
+    tags:
+      - v*
+
+  # Run tests for any PRs.
+  pull_request:
+
+env:
+  IMAGE_NAME: idonationweb
+  CONTAINER_NAME: viniciusschulz/idonationweb
+  VERSION: latest
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Run tests
+        run: |
+          docker build . --file Dockerfile
+  push:
+
+    needs: test
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push'
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Build image
+        run: docker build . --file Dockerfile --tag $IMAGE_NAME
+
+      - name: Log into GitHub Container Registry
+        run: echo "${{ secrets.CR_PAT }}" | docker login https://index.docker.io/v1/ --username viniciusschulz --password ${{ secrets.DOCKER_HUB_SECRET }}
+
+      - name: Push image to Docker Hub Container Registry
+        run: |
+          VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
+          [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')        
+          docker tag $IMAGE_NAME $CONTAINER_NAME:$VERSION
+          docker push $CONTAINER_NAME:$VERSION
+
+  deploy:
+
+    needs: push
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Deploy image to AWS
+        run: |
+          VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
+          [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')        
+          mkdir "${HOME}/.ssh"
+          echo "${{secrets.USER_SSH_PRIVATE_KEY}}" > "${HOME}/.ssh/id_rsa"
+          chmod 700 "${HOME}/.ssh/id_rsa"
+          ssh-keygen -f ${HOME}/.ssh/id_rsa -y
+          eval "$(ssh-agent -s)"
+          ssh-add ${HOME}/.ssh/id_rsa
+          ssh-keyscan -t rsa -H 3.141.196.157 >> ${HOME}/.ssh/known_hosts
+          ssh ec2-user@3.141.196.157 docker pull $CONTAINER_NAME:$VERSION
+
+  run:
+
+    needs: deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Run application at AWS
+        run: |
+          VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
+          [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')        
+          mkdir "${HOME}/.ssh"
+          echo "${{secrets.USER_SSH_PRIVATE_KEY}}" > "${HOME}/.ssh/id_rsa"
+          chmod 700 "${HOME}/.ssh/id_rsa"
+          ssh-keygen -f ${HOME}/.ssh/id_rsa -y
+          eval "$(ssh-agent -s)"
+          ssh-add ${HOME}/.ssh/id_rsa
+          ssh-keyscan -t rsa -H 3.141.196.157 >> ${HOME}/.ssh/known_hosts
+          ssh ec2-user@3.141.196.157 docker rm -f $IMAGE_NAME || true
+          ssh ec2-user@3.141.196.157 docker run -idt -p 80:80 --name=$IMAGE_NAME $CONTAINER_NAME:$VERSION

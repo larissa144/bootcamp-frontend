@@ -1,9 +1,14 @@
-FROM node:16.8.0-alpine3.11
+FROM node:16.8.0-alpine3.11 AS builder
 
-WORKDIR /var/www/html
+WORKDIR /app
 
 COPY . .
 
-RUN yarn install
+RUN yarn install && yarn build
 
-CMD sh -c "yarn install && yarn start"
+FROM nginx:alpine
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=builder /app/build /usr/share/nginx/html
+EXPOSE 80
+
+ENTRYPOINT ["nginx", "-g", "daemon off;"]
