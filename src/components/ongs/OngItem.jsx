@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react';
 import Button from '../layouts/button';
 import { OngLi, OngImgContainer, OngImg } from './styled'
 import axios from 'axios';
-import defaultImage from '../../assets/img/ong1.png';
 import { useKeycloak } from '@react-keycloak/web'
 import { Link } from 'react-router-dom';
+import defaultImage from '../../assets/img/ong1.png';
 
 function OngItem({ id, name, category, isFollowing, ongs, setOngs }) {
     const { keycloak, initialized } = useKeycloak()
-    const [img, setImg] = useState(null);
+    const [img, setImg] = useState(defaultImage);
     
 
     useEffect(async () => {
@@ -22,7 +22,7 @@ function OngItem({ id, name, category, isFollowing, ongs, setOngs }) {
                 });
                 setImg(`data:image/jpeg;base64,${Buffer.from(result.data, 'binary').toString('base64')}`)
             } catch (error) {
-                setImg(defaultImage)
+                console.log(error)
             }
         }
     }, [ initialized ])

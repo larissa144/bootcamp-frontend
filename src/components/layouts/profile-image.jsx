@@ -1,6 +1,5 @@
 import styled from 'styled-components';
-import React, { useState } from 'react';
-import { useEffect } from 'react/cjs/react.development';
+import React, { useState, useEffect } from 'react';
 import { useKeycloak } from '@react-keycloak/web';
 import axios from 'axios';
 
@@ -43,8 +42,10 @@ const CallToChangeImageLayer = styled.div`
     border-radius: 50%;
     left: 0;
     color: white;
-    line-height: 60px;
-    text-align: center
+    text-align: center;
+    transition: .8s;
+    font-size: .8em;
+    padding: 15px 0;
 `
 
 const ProfileImageInput = styled.input`
@@ -84,7 +85,7 @@ const ProfileImage = ( {img, setImg} ) => {
             <Img src={img} />
             <CallToChangeImageLayer onClick={() => {
                 inputRef.current.click()
-            }}>Trocar</CallToChangeImageLayer>
+            }}>Trocar foto</CallToChangeImageLayer>
             <ProfileImageInput onChange={(e) => {
                 setNewProfileImg(e.target.files[0])
             }} ref={inputRef} type="file" />
