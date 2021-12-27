@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useKeycloak } from '@react-keycloak/web'
 import Header from '../layouts/header'
 import PerfilOng from './perfilOng';
-import MidiaSocial from './midia';
 import { Main, PerfilContent, PerfilSocialMedias, Divisor } from './styled'
 import defaultImage from '../../assets/img/ong1.png';
 import { useParams } from 'react-router-dom';
@@ -13,25 +12,21 @@ import axios from 'axios';
 function Perfil(props) {
   const { keycloak, initialized } = useKeycloak();
   const [ongData, setOngData] = useState({});
-  const [img, setImg] = useState(null);
+  const [img, setImg] = useState(defaultImage);
   const [ redesSociais, setRedesSociasi ] = useState([]);
 
   let { id } = useParams();
 
   useEffect(async () => {
     if (initialized) {
-      const result = await axios.get(`http://ec2-3-17-26-83.us-east-2.compute.amazonaws.com:8080/ongs/${id}`, {
-        headers: {
-          Authorization: "Bearer " + keycloak.token
-        }
-      });
-      setOngData(result.data)
-    }
-  }, [initialized]);
-
-  useEffect(async () => {
-    if (initialized) {
       try {
+        const ongResult = await axios.get(`http://ec2-3-17-26-83.us-east-2.compute.amazonaws.com:8080/ongs/${id}`, {
+            headers: {
+            Authorization: "Bearer " + keycloak.token
+            }
+        });
+        setOngData(ongResult.data)
+        
         const result = await axios.get(`http://ec2-3-17-26-83.us-east-2.compute.amazonaws.com:8080/ongs/${id}/download-imagem`, {
           headers: {
             Authorization: "Bearer " + keycloak.token
@@ -40,7 +35,7 @@ function Perfil(props) {
         });
         setImg(`data:image/jpeg;base64,${Buffer.from(result.data, 'binary').toString('base64')}`)
       } catch (error) {
-        setImg(defaultImage)
+          console.log(error);
       }
     }
   }, [initialized])
@@ -56,6 +51,7 @@ function Perfil(props) {
         });
         console.log("redes_sociais", { data: result.data });
       } catch (error) {
+        console.log(error);
       }
     }
   }, [initialized]);
@@ -68,10 +64,10 @@ function Perfil(props) {
           <PerfilOng
             name={ongData.nome ? ongData.nome : "Nome da ONG"}
             img={img}
-            tel={ongData.contato ? ongData.contato.telefone : "Telefone da ONG"}
-            email={ongData.contato ? ongData.contato.email : "Email da ONG"}
-            address={ongData.contato ? ongData.contato.endereco : "Endereço da ONG"}
-            category={ongData.categoria ? ongData.categoria.nome : ""}
+            tel={ongData.contato ? ongData.contato.telefone : "..."}
+            email={ongData.contato ? ongData.contato.email : "..."}
+            address={ongData.contato ? ongData.contato.endereco : "..."}
+            category={ongData.categoria ? ongData.categoria.nome : "..."}
           />
         </PerfilContent>
         <Divisor></Divisor>

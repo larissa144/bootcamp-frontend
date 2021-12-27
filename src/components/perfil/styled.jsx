@@ -23,9 +23,18 @@ const Divisor = styled.div`
    left: 50%;
 `
 
-const OngInfos = styled.li`
+const OngInfos = styled.div`
     display: flex;
     flex-wrap: wrap;
+
+    > h4 {
+        text-align: center;
+        display: block;
+        margin: 0 0 30px;
+        width: 100%;
+        font-size: 1.5em;
+        font-weight: 400;
+    }
 
     > span {
         display: block;
@@ -35,6 +44,9 @@ const OngInfos = styled.li`
         padding: 0 5px 15px;
         white-space: pre;
         overflow: hidden;
+    }
+    > span > svg {
+        margin-right: 5px;
     }
 `
 
@@ -49,7 +61,7 @@ const OngImgContainer = styled.div`
 const OngImg = styled.img`
     max-width: 90%;
     max-height: 200px;
-    height: 230px;
+    border-radius: 50%
 `
 
 const OngImgMidiaContent = styled.div`
