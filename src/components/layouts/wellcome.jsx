@@ -22,17 +22,18 @@ const Wellcome = ( ) =>{
     const [ img, setImg ] = useState(defaultProfileImage);
 
     useEffect(() => {
-        if(initialized) {
-            setName(keycloak.tokenParsed.name)
-        }
         const getProfilePicture = async () => {
+            console.log(keycloak.tokenParsed)
             try {
-                setImg(await get(`http://ec2-3-17-26-83.us-east-2.compute.amazonaws.com:8080/usuarios/download-imagem`, keycloak))
+                setImg(await get(`http://ec2-3-17-26-83.us-east-2.compute.amazonaws.com:8080/usuarios/download-imagem?id=${keycloak.tokenParsed.email}`, keycloak))
             } catch (error) {
                 console.error(error);
             }
         } 
-        getProfilePicture();  
+        if(initialized) {
+            setName(keycloak.tokenParsed.name)
+            getProfilePicture();  
+        }
     }, [ initialized, keycloak, keycloak.token ]);
 
     return(
