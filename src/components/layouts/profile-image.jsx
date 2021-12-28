@@ -4,15 +4,6 @@ import { useKeycloak } from '@react-keycloak/web';
 import axios from 'axios';
 import { get } from "../../utils/images"
 
-function getBase64(file) {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => resolve(reader.result);
-      reader.onerror = error => reject(error);
-    });
-}
-
 const ProfileImageContainer = styled.div`
     width: 60px;
     height: 60px;

@@ -25,7 +25,7 @@ async function configure (keycloak) {
                 }
             },
             readHeaders: false,
-            maxAge: 15 * 60 * 1000,
+            maxAge: 8 * 60 * 60 * 1000,
             store: forageStore // Pass `localforage` store to `axios-cache-adapter`
         },
     })
