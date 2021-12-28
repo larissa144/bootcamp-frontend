@@ -72,7 +72,7 @@ const ProfileImage = ( {img, setImg} ) => {
             }
         }
         setProfilePicture();
-    }, [ newProfileImg, keycloak.token, setImg ])
+    }, [ newProfileImg, keycloak.token, keycloak, setImg ])
 
     return(
         <ProfileImageContainer>
