@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { OngInfos, OngImgContainer, OngImg } from './styled';
 import { FiPhoneCall, FiMail, FiMapPin } from "react-icons/fi";
 

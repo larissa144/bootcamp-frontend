@@ -5,7 +5,7 @@ import LogoImage from '../../assets/img/logo-branco.png'
 import { ColorBody } from '../layouts/background-color'
 import { Card } from '../layouts/card'
 import Button from '../layouts/button'
-import Input, {InputFile} from '../layouts/input'
+import Input from '../layouts/input'
 import { handleChange } from '../../utils/handleChange';
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
@@ -90,12 +90,13 @@ function Cadastro() {
         } else {
             setMessage("As senhas não são iguais.");
         }
-    }, [ passwordConfirmation ]);
+    }, [ password, passwordConfirmation ]);
 
     const register = async () => {
         try {
             if(password !== passwordConfirmation) {
-                return
+                setMessage("As senhas não são iguais.");
+                return;
             }
             setMessage("Carregando...");
             await axios.post("http://ec2-3-17-26-83.us-east-2.compute.amazonaws.com:8080/usuarios", {

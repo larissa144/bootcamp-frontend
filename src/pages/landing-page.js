@@ -13,7 +13,7 @@ function LandingPage() {
 
     useEffect(() => {
         setAuth(keycloak.authenticated);
-    }, [ initialized ])
+    }, [ initialized, keycloak.authenticated ])
 
     if(auth) {
         return (

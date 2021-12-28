@@ -21,23 +21,25 @@ const Wellcome = ( ) =>{
     const [ name, setName ] = useState("");
     const [ img, setImg ] = useState(defaultProfileImage);
 
-    useEffect(async () => {
+    useEffect(() => {
         if(initialized) {
             setName(keycloak.tokenParsed.name)
         }
-        
-        try {
-            const result = await axios.get(`http://ec2-3-17-26-83.us-east-2.compute.amazonaws.com:8080/usuarios/download-imagem`, {
-                headers: {
-                    Authorization: "Bearer " + keycloak.token
-                },
-                responseType: 'arraybuffer'
-            });
-            setImg(`data:image/jpeg;base64,${Buffer.from(result.data, 'binary').toString('base64')}`)
-        } catch (error) {
-
-        }
-    }, [ initialized ]);
+        const getProfilePicture = async () => {
+            try {
+                const result = await axios.get(`http://ec2-3-17-26-83.us-east-2.compute.amazonaws.com:8080/usuarios/download-imagem`, {
+                    headers: {
+                        Authorization: "Bearer " + keycloak.token
+                    },
+                    responseType: 'arraybuffer'
+                });
+                setImg(`data:image/jpeg;base64,${Buffer.from(result.data, 'binary').toString('base64')}`)
+            } catch (error) {
+                console.error(error);
+            }
+        } 
+        getProfilePicture();  
+    }, [ initialized, keycloak.tokenParsed.name, keycloak.token ]);
 
     return(
         <WellcomeDiv>

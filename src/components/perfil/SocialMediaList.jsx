@@ -1,14 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import { SocialMediaListContainer, SocialMediaListItem } from './styled';
+import React from 'react';
+import { SocialMediaListContainer } from './styled';
 import SocialMediaItem from './SocialMediaItem';
+
 
 function SocialMediaList( { socialMedias } ) {
     return (
         <SocialMediaListContainer>
             {
-                socialMedias.map(data => (
-                    <SocialMediaItem data={data} />
-                ))
+                socialMedias.map(data => {
+                    return (
+                        <SocialMediaItem key={data.id} data={data} />
+                    )
+                })
             }
         </SocialMediaListContainer>
     )

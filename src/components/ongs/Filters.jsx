@@ -10,16 +10,19 @@ function Filters({ category, setCategory, searchName, setSearchName, page, setPa
     const [ categories, setCategories ] = useState([]);
     const { keycloak, initialized } = useKeycloak();
 
-    useEffect(async () => {
-        if(initialized) {
-            const result = await axios.get("http://ec2-3-17-26-83.us-east-2.compute.amazonaws.com:8080/categorias", {
-                headers: {
-                    Authorization: "Bearer " + keycloak.token
-                },
-            });
-            setCategories(result.data.content)
+    useEffect(() => {
+        const getCategories = async () => {
+            if(initialized) {
+                const result = await axios.get("http://ec2-3-17-26-83.us-east-2.compute.amazonaws.com:8080/categorias", {
+                    headers: {
+                        Authorization: "Bearer " + keycloak.token
+                    },
+                });
+                setCategories(result.data.content)
+            }
         }
-    }, [ initialized ]);
+        getCategories();
+    }, [ initialized, keycloak.token ]);
 
     return (
         <Filter>

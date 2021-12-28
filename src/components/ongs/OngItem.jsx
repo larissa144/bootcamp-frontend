@@ -11,21 +11,24 @@ function OngItem({ id, name, category, isFollowing, ongs, setOngs }) {
     const [img, setImg] = useState(defaultImage);
     
 
-    useEffect(async () => {
-        if(initialized) {
-            try {
-                const result = await axios.get(`http://ec2-3-17-26-83.us-east-2.compute.amazonaws.com:8080/ongs/${id}/download-imagem`, {
-                    headers: {
-                        Authorization: "Bearer " + keycloak.token
-                    },
-                    responseType: 'arraybuffer'
-                });
-                setImg(`data:image/jpeg;base64,${Buffer.from(result.data, 'binary').toString('base64')}`)
-            } catch (error) {
-                console.log(error)
+    useEffect(() => {
+        const getOngPicture = async () => {
+            if(initialized) {
+                try {
+                    const result = await axios.get(`http://ec2-3-17-26-83.us-east-2.compute.amazonaws.com:8080/ongs/${id}/download-imagem`, {
+                        headers: {
+                            Authorization: "Bearer " + keycloak.token
+                        },
+                        responseType: 'arraybuffer'
+                    });
+                    setImg(`data:image/jpeg;base64,${Buffer.from(result.data, 'binary').toString('base64')}`)
+                } catch (error) {
+                    console.error(error)
+                }
             }
         }
-    }, [ initialized ])
+        getOngPicture();
+    }, [ initialized, keycloak.token, id ])
 
     const toggleFollow = async () => {
         const seguir = !isFollowing;
@@ -50,7 +53,7 @@ function OngItem({ id, name, category, isFollowing, ongs, setOngs }) {
                 return newItem;
             })
             setOngs(newOngs)
-            console.log({result})
+            console.error({result})
 
         } catch (error) {
         }

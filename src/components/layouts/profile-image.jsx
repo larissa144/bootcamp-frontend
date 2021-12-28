@@ -53,32 +53,35 @@ const ProfileImageInput = styled.input`
 `
 
 const ProfileImage = ( {img, setImg} ) => {
-    const { keycloak, initialized } = useKeycloak()
+    const { keycloak } = useKeycloak()
     const inputRef = React.useRef(null);
     const [newProfileImg, setNewProfileImg] = useState(null);
 
-    useEffect(async () => {
-        try {
-            if(!newProfileImg) return
-            const formData = new FormData();
-            formData.append('arquivo', newProfileImg)
-            const config = {
-                headers: {
-                    'content-type': 'multipart/form-data',
-                    Authorization: "Bearer " + keycloak.token
+    useEffect(() => {
+        const setProfilePicture = async () => {
+            try {
+                if(!newProfileImg) return;
+                const formData = new FormData();
+                formData.append('arquivo', newProfileImg)
+                const config = {
+                    headers: {
+                        'content-type': 'multipart/form-data',
+                        Authorization: "Bearer " + keycloak.token
+                    }
                 }
+                await axios.put(
+                    `http://ec2-3-17-26-83.us-east-2.compute.amazonaws.com:8080/usuarios/upload-imagem`,
+                    formData,
+                    config
+                );
+                const fileBase64 = await getBase64(newProfileImg);
+                setImg(fileBase64);
+            } catch (error) {
+                alert("Erro ao trocar imagem de perfil, tente outro arquivo.")
             }
-            await axios.put(
-                `http://ec2-3-17-26-83.us-east-2.compute.amazonaws.com:8080/usuarios/upload-imagem`,
-                formData,
-                config
-            );
-            const fileBase64 = await getBase64(newProfileImg);
-            setImg(fileBase64);
-        } catch (error) {
-            alert("Erro ao trocar imagem de perfil, tente outro arquivo.")
         }
-    }, [ newProfileImg ])
+        setProfilePicture();
+    }, [ newProfileImg, keycloak.token, setImg ])
 
     return(
         <ProfileImageContainer>

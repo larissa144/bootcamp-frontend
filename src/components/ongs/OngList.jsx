@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import OngItem from './OngItem';
 import Pagination from './Pagination';
 import { OngsUl } from './styled'

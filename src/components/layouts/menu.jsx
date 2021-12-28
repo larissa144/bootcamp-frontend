@@ -5,7 +5,7 @@ import { FiLogOut } from "react-icons/fi";
 import { useKeycloak } from '@react-keycloak/web'
 
 const Menu = () => {
-    const { keycloak, initialized } = useKeycloak()
+    const { keycloak } = useKeycloak()
 
     return(
         <nav className="app-menu">

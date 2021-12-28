@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 import { IoEllipse } from "react-icons/io5";
 import styled from 'styled-components'

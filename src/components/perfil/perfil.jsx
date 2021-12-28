@@ -17,53 +17,61 @@ function Perfil() {
 
     let { id } = useParams();
 
-    useEffect(async () => {
-        if (initialized) {
-            try {
-                const ongResult = await axios.get(`http://ec2-3-17-26-83.us-east-2.compute.amazonaws.com:8080/ongs/${id}`, {
-                    headers: {
-                    Authorization: "Bearer " + keycloak.token
-                    }
-                });
-                setOngData(ongResult.data);
-            } catch (error) {
-                console.log(error);
+    useEffect(() => { 
+        const getOngData = async () => {
+            if (initialized) {
+                try {
+                    const ongResult = await axios.get(`http://ec2-3-17-26-83.us-east-2.compute.amazonaws.com:8080/ongs/${id}`, {
+                        headers: {
+                        Authorization: "Bearer " + keycloak.token
+                        }
+                    });
+                    setOngData(ongResult.data);
+                } catch (error) {
+                    console.error(error);
+                }
             }
         }
-    }, [initialized]);
+        getOngData();
+    }, [initialized, keycloak.token, id]);
 
-    useEffect(async () => {
-        if (initialized) {
-            try {
-                const socialMediaResult = await axios.get(`http://ec2-3-17-26-83.us-east-2.compute.amazonaws.com:8080/ongs/${id}/redes-sociais`, {
-                    headers: {
-                    Authorization: "Bearer " + keycloak.token
-                    },
-                    responseType: 'array'
-                });
-                console.log("redes_sociais", { data: socialMediaResult.data.content });
-                setSocialMedias(socialMediaResult.data.content);
-            } catch (error) {
-                console.log(error);
+    useEffect(() => {
+        const getSocialMedias = async () => {
+            if (initialized) {
+                try {
+                    const socialMediaResult = await axios.get(`http://ec2-3-17-26-83.us-east-2.compute.amazonaws.com:8080/ongs/${id}/redes-sociais`, {
+                        headers: {
+                            Authorization: "Bearer " + keycloak.token
+                        },
+                    });
+                    setSocialMedias(socialMediaResult.data.content);
+                    
+                } catch (error) {
+                    console.error(error);
+                }
             }
         }
-    }, [initialized]);
+        getSocialMedias()
+    }, [initialized, keycloak.token, id]);
 
-    useEffect(async () => {
-        if (initialized) {
-            try {
-                const imgResult = await axios.get(`http://ec2-3-17-26-83.us-east-2.compute.amazonaws.com:8080/ongs/${id}/download-imagem`, {
-                    headers: {
-                    Authorization: "Bearer " + keycloak.token
-                    },
-                    responseType: 'arraybuffer'
-                });
-                setImg(`data:image/jpeg;base64,${Buffer.from(imgResult.data, 'binary').toString('base64')}`);
-            } catch (error) {
-                console.log(error);
+    useEffect(() => {
+        const getPicture = async () => {
+            if (initialized) {
+                try {
+                    const imgResult = await axios.get(`http://ec2-3-17-26-83.us-east-2.compute.amazonaws.com:8080/ongs/${id}/download-imagem`, {
+                        headers: {
+                        Authorization: "Bearer " + keycloak.token
+                        },
+                        responseType: 'arraybuffer'
+                    });
+                    setImg(`data:image/jpeg;base64,${Buffer.from(imgResult.data, 'binary').toString('base64')}`);
+                } catch (error) {
+                    console.error(error);
+                }
             }
         }
-    }, [initialized]);
+        getPicture();
+    }, [initialized, keycloak.token, id]);
 
     return (
         <>

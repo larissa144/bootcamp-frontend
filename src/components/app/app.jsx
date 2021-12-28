@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Secured from '../../pages/secured';
 import Ongs from '../ongs/Ongs';
 import CriarNovaOng from '../ong/criarNovaOng';

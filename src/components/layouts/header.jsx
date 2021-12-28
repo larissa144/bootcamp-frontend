@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Menu from "../layouts/menu";
 import '../../assets/css/style.css';
 import Wellcome from './wellcome';
