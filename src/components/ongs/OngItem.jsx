@@ -28,7 +28,7 @@ function OngItem({ id, name, category, isFollowing, ongs, setOngs }) {
     const toggleFollow = async () => {
         const seguir = !isFollowing;
         try {
-            const result = await axios.put(`http://ec2-3-17-26-83.us-east-2.compute.amazonaws.com:8080/ongs/${id}/seguir`,
+            await axios.put(`http://ec2-3-17-26-83.us-east-2.compute.amazonaws.com:8080/ongs/${id}/seguir`,
                 {
                     seguir
                 },
@@ -47,10 +47,10 @@ function OngItem({ id, name, category, isFollowing, ongs, setOngs }) {
                 newItem.situacao = seguir ? "SEGUINDO" : "NAO_SEGUINDO";
                 return newItem;
             })
-            setOngs(newOngs)
-            console.error({result})
 
+            setOngs(newOngs)
         } catch (error) {
+            console.error({error})
         }
     }
 
