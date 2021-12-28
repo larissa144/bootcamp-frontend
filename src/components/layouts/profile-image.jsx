@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import React, { useState, useEffect } from 'react';
 import { useKeycloak } from '@react-keycloak/web';
 import axios from 'axios';
+import { get } from "../../utils/images"
 
 function getBase64(file) {
     return new Promise((resolve, reject) => {
@@ -74,8 +75,7 @@ const ProfileImage = ( {img, setImg} ) => {
                     formData,
                     config
                 );
-                const fileBase64 = await getBase64(newProfileImg);
-                setImg(fileBase64);
+                setImg(await get(`http://ec2-3-17-26-83.us-east-2.compute.amazonaws.com:8080/usuarios/download-imagem`, keycloak, false))
             } catch (error) {
                 alert("Erro ao trocar imagem de perfil, tente outro arquivo.")
             }

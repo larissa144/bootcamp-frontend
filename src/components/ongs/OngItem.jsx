@@ -5,6 +5,7 @@ import axios from 'axios';
 import { useKeycloak } from '@react-keycloak/web'
 import { Link } from 'react-router-dom';
 import defaultImage from '../../assets/img/ong1.png';
+import { get } from "../../utils/images"
 
 function OngItem({ id, name, category, isFollowing, ongs, setOngs }) {
     const { keycloak, initialized } = useKeycloak()
@@ -15,20 +16,14 @@ function OngItem({ id, name, category, isFollowing, ongs, setOngs }) {
         const getOngPicture = async () => {
             if(initialized) {
                 try {
-                    const result = await axios.get(`http://ec2-3-17-26-83.us-east-2.compute.amazonaws.com:8080/ongs/${id}/download-imagem`, {
-                        headers: {
-                            Authorization: "Bearer " + keycloak.token
-                        },
-                        responseType: 'arraybuffer'
-                    });
-                    setImg(`data:image/jpeg;base64,${Buffer.from(result.data, 'binary').toString('base64')}`)
+                    setImg(await get(`http://ec2-3-17-26-83.us-east-2.compute.amazonaws.com:8080/ongs/${id}/download-imagem`, keycloak))
                 } catch (error) {
                     console.error(error)
                 }
             }
         }
         getOngPicture();
-    }, [ initialized, keycloak.token, id ])
+    }, [ initialized, keycloak, id ])
 
     const toggleFollow = async () => {
         const seguir = !isFollowing;

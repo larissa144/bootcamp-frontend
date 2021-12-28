@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { SocialMediaListItemContainer, SocialMediaImg } from './styled'
 import { useKeycloak } from '@react-keycloak/web'
-import axios from 'axios';
+import { get } from "../../utils/images"
 
 function SocialMediaItem( { data } ) {
     const { keycloak, initialized } = useKeycloak(); 
@@ -11,20 +11,14 @@ function SocialMediaItem( { data } ) {
         const getPicture = async () => {
             if (initialized) {
                 try {
-                    const result = await axios.get(`http://ec2-3-17-26-83.us-east-2.compute.amazonaws.com:8080/redes-sociais/${data.redeSocial.id}/download-imagem`, {
-                        headers: {
-                            Authorization: "Bearer " + keycloak.token
-                        },
-                        responseType: 'arraybuffer'
-                    });
-                    setImg(`data:image/jpeg;base64,${Buffer.from(result.data, 'binary').toString('base64')}`)
+                    setImg(await get(`http://ec2-3-17-26-83.us-east-2.compute.amazonaws.com:8080/redes-sociais/${data.redeSocial.id}/download-imagem`, keycloak))
                 } catch (error) {
                     console.error(error);
                 }
             }
         }
         getPicture();
-    }, [initialized, keycloak.token, data.redeSocial.id]);
+    }, [initialized, keycloak, data.redeSocial.id]);
 
     return (
         <SocialMediaListItemContainer>

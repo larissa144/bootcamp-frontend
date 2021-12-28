@@ -8,6 +8,7 @@ import { useParams } from 'react-router-dom';
 import Footer from '../layouts/footer';
 import axios from 'axios';
 import SocialMediaList from './SocialMediaList';
+import { get } from "../../utils/images"
 
 function Perfil() {
     const { keycloak, initialized } = useKeycloak();
@@ -58,20 +59,14 @@ function Perfil() {
         const getPicture = async () => {
             if (initialized) {
                 try {
-                    const imgResult = await axios.get(`http://ec2-3-17-26-83.us-east-2.compute.amazonaws.com:8080/ongs/${id}/download-imagem`, {
-                        headers: {
-                        Authorization: "Bearer " + keycloak.token
-                        },
-                        responseType: 'arraybuffer'
-                    });
-                    setImg(`data:image/jpeg;base64,${Buffer.from(imgResult.data, 'binary').toString('base64')}`);
+                    setImg(await get(`http://ec2-3-17-26-83.us-east-2.compute.amazonaws.com:8080/ongs/${id}/download-imagem`, keycloak));
                 } catch (error) {
                     console.error(error);
                 }
             }
         }
         getPicture();
-    }, [initialized, keycloak.token, id]);
+    }, [initialized, keycloak, id]);
 
     return (
         <>
