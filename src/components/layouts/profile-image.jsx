@@ -44,7 +44,7 @@ const ProfileImageInput = styled.input`
     display: none
 `
 
-const ProfileImage = ( {img, setImg} ) => {
+const ProfileImage = ( {img, setImg, email} ) => {
     const { keycloak } = useKeycloak()
     const inputRef = React.useRef(null);
     const [newProfileImg, setNewProfileImg] = useState(null);
@@ -66,13 +66,13 @@ const ProfileImage = ( {img, setImg} ) => {
                     formData,
                     config
                 );
-                setImg(await get(`http://ec2-3-17-26-83.us-east-2.compute.amazonaws.com:8080/usuarios/download-imagem`, keycloak, false))
+                setImg(await get(`http://ec2-3-17-26-83.us-east-2.compute.amazonaws.com:8080/usuarios/download-imagem?id=${email}`, keycloak, false))
             } catch (error) {
                 alert("Erro ao trocar imagem de perfil, tente outro arquivo.")
             }
         }
         setProfilePicture();
-    }, [ newProfileImg, keycloak.token, keycloak, setImg ])
+    }, [ newProfileImg, keycloak.token, keycloak, setImg, email ])
 
     return(
         <ProfileImageContainer>
