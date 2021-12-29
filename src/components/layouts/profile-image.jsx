@@ -66,7 +66,10 @@ const ProfileImage = ( {img, setImg, email} ) => {
                     formData,
                     config
                 );
-                setImg(await get(`http://ec2-3-17-26-83.us-east-2.compute.amazonaws.com:8080/usuarios/download-imagem?id=${email}`, keycloak, false))
+                const imageFromApi = await get(`http://ec2-3-17-26-83.us-east-2.compute.amazonaws.com:8080/usuarios/download-imagem?id=${email}`, keycloak, false);
+                if(imageFromApi) {
+                    setImg(imageFromApi)
+                }
             } catch (error) {
                 alert("Erro ao trocar imagem de perfil, tente outro arquivo.")
             }

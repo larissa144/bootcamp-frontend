@@ -16,7 +16,10 @@ function OngItem({ id, name, category, isFollowing, ongs, setOngs }) {
         const getOngPicture = async () => {
             if(initialized) {
                 try {
-                    setImg(await get(`http://ec2-3-17-26-83.us-east-2.compute.amazonaws.com:8080/ongs/${id}/download-imagem`, keycloak))
+                    const imgFromApi = await get(`http://ec2-3-17-26-83.us-east-2.compute.amazonaws.com:8080/ongs/${id}/download-imagem`, keycloak);
+                    if(imgFromApi) {
+                        setImg(imgFromApi)
+                    }
                 } catch (error) {
                     console.error(error)
                 }

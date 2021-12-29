@@ -39,6 +39,12 @@ export const get = async (url, keycloak, cache = true) => {
     if(!cache) {
         config.clearCacheEntry = true;
     }
-    const result = await axios.get(url, config)
-    return (`data:image/jpeg;base64,${Buffer.from(result.data, 'binary').toString('base64')}`)
+    try {
+        const result = await axios.get(url, config)
+        if(result.data.byteLength > 0) {
+            return `data:image/png;base64,${Buffer.from(result.data, 'binary').toString('base64')}`;
+        }
+    } catch (error) {
+        console.error(error);
+    }   
 }

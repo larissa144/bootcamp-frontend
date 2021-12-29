@@ -59,7 +59,10 @@ function Perfil() {
         const getPicture = async () => {
             if (initialized) {
                 try {
-                    setImg(await get(`http://ec2-3-17-26-83.us-east-2.compute.amazonaws.com:8080/ongs/${id}/download-imagem`, keycloak));
+                    const imageFromApi = await get(`http://ec2-3-17-26-83.us-east-2.compute.amazonaws.com:8080/ongs/${id}/download-imagem`, keycloak);
+                    if(imageFromApi) {
+                        setImg(imageFromApi)
+                    }
                 } catch (error) {
                     console.error(error);
                 }

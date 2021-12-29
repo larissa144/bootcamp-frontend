@@ -105,9 +105,10 @@ function Cadastro() {
                 senha: password,
                 cpf
             })
-            setMessage("");
-            alert("Cadastro realizado");
-            navigate("/login")
+            setMessage("Cadastro realizado");
+            setTimeout(() => {
+                navigate("/login");
+            }, 600);
         } catch (error) {
             if(error.response && error.response.data && error.response.data.messages) {
                 setMessage(error.response.data.messages[0]);

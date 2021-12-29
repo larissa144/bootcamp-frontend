@@ -13,6 +13,7 @@ import Footer from "../layouts/footer"
 import img from "../../assets/img/ong1.png"
 import { useKeycloak } from '@react-keycloak/web'
 import axios from "axios"
+import { useNavigate } from 'react-router-dom';
 
 const Message = styled.p`
     padding: 5px;
@@ -31,6 +32,7 @@ function getBase64(file) {
 }
 
 function CadastroOng() {
+    const navigate = useNavigate();
     const [ name, setName ] = useState("");
     const [ cnpj, setCnpj ] = useState("");
     const [ email, setEmail ] = useState("");
@@ -67,6 +69,52 @@ function CadastroOng() {
         }
         getCategories();
     }, [ initialized, keycloak.token ]);
+
+    const registerOng = async () => {
+        try {
+            setMessage("Carregando...");
+            const result = await axios.post("http://ec2-3-17-26-83.us-east-2.compute.amazonaws.com:8080/ongs", {
+                nome: name,
+                idCategoria: category,
+                contato: {
+                    telefone: phone,
+                    endereco: address,
+                    email: "string",
+                },
+                cnpj 
+            }, {
+                headers: {
+                    Authorization: "Bearer " + keycloak.token
+                },
+            });
+
+            const formData = new FormData();
+            formData.append('arquivo', ongImg)
+            const config = {
+                headers: {
+                    'content-type': 'multipart/form-data',
+                    Authorization: "Bearer " + keycloak.token
+                }
+            }
+            if(ongImg) {
+                await axios.put(
+                    `http://ec2-3-17-26-83.us-east-2.compute.amazonaws.com:8080/ongs/${result.data.id}/upload-imagem`,
+                    formData,
+                    config
+                );
+            }
+            setMessage("Ong criada!");
+            setTimeout(() => {
+                navigate(`/ongs/${result.data.id}`)
+            }, 600);
+        } catch (error) {
+            if(error.response && error.response.data && error.response.data.messages) {
+                setMessage(error.response.data.messages[0]);
+                return
+            }
+            setMessage("Erro desconhecido, tente novamente.");
+        }
+    }
 
     return(
         <>
@@ -143,6 +191,7 @@ function CadastroOng() {
                         </DivInput>
                         <DivButton>
                             <Button 
+                                onClick={registerOng}
                                 textButton='Criar nova conta' 
                                 width={'45%'} 
                                 height={'25%'}
