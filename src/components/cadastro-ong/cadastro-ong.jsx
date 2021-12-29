@@ -11,6 +11,8 @@ import { handleChange } from '../../utils/handleChange';
 import { DivImg, Subtitle, Title, DivButton, DivInput, DivTitles, DivCard, Select, OngImageContainer } from './styled'
 import Footer from "../layouts/footer"
 import img from "../../assets/img/ong1.png"
+import { useKeycloak } from '@react-keycloak/web'
+import axios from "axios"
 
 const Message = styled.p`
     padding: 5px;
@@ -37,8 +39,11 @@ function CadastroOng() {
     const [ category, setCategory ] = useState("");
     const [ ongImg, setOngImg ] = useState(null)
     const [ imgPreview, setImgPreview ] = useState(null)
+    const [ categories, setCategories ] = useState([])
+
     const [ message, setMessage ] = useState("");
     const inputRef = React.useRef(null);
+    const { keycloak, initialized } = useKeycloak();
 
     useEffect(() => {
         if(!ongImg) return;
@@ -47,6 +52,21 @@ function CadastroOng() {
         }
         updateImagePreview();
     }, [ ongImg ]);
+    
+
+    useEffect(() => {
+        const getCategories = async () => {
+            if(initialized) {
+                const result = await axios.get("http://ec2-3-17-26-83.us-east-2.compute.amazonaws.com:8080/categorias", {
+                    headers: {
+                        Authorization: "Bearer " + keycloak.token
+                    },
+                });
+                setCategories(result.data.content)
+            }
+        }
+        getCategories();
+    }, [ initialized, keycloak.token ]);
 
     return(
         <>
@@ -118,6 +138,7 @@ function CadastroOng() {
                             />
                             <Select value={category} onChange={handleChange(setCategory)}>
                                 <option value="" disabled>Selecione uma categoria</option>
+                                { categories.map(item => (<option key={item.nome} value={item.id}>{item.nome}</option>)) }
                             </Select>
                         </DivInput>
                         <DivButton>
