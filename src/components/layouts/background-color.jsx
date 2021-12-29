@@ -10,7 +10,6 @@ export const ColorBody = styled.div`
   align-items: center;
 `
 
-
 export const ColorBodyWhite  = styled.div`
   width: 100vw;
   height: 100vh;

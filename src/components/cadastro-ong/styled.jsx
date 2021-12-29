@@ -2,15 +2,26 @@ import styled from 'styled-components'
 
 const DivImg = styled.div`
     display: flex;
-    width: 100%;
+    width: 50%;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
 `
 const DivCard = styled.div`
     display: flex;
-    width: 100%;
+    width: 50%;
     justify-content: center;
     align-items: center;
+`
+
+const OngImageContainer = styled.div`
+    width: 50%;
+    text-align: center;
+    justify-content: center;
+    > img {
+        width: 70%;
+        margin-bottom: 20px;
+    }
 `
 const DivTitles = styled.div`
     display: flex;
@@ -68,5 +79,6 @@ export {
     DivInput,
     DivTitles,
     DivCard,
-    Select
+    Select,
+    OngImageContainer
 }
