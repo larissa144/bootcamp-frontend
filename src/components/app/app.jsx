@@ -1,7 +1,7 @@
 import React from 'react';
 import Secured from '../../pages/secured';
 import Ongs from '../ongs/Ongs';
-import CriarNovaOng from '../ong/criarNovaOng';
+import CadastroOng from '../cadastro-ong/cadastro-ong';
 import Cadastro from '../cadastro/cadastro';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import LandingPage from '../../pages/landing-page';
@@ -20,7 +20,7 @@ function App() {
                     <Route path="/feed" element={<PrivateRoute children={<Ongs />} />} />
                     <Route path="/ongs" element={<PrivateRoute children={<Ongs />} />} />
                     <Route path="/ongs/:id" element={<PrivateRoute children={<Perfil />} />} />
-                    <Route path="/ongs/cadastro" element={<PrivateRoute children={<CriarNovaOng />} />} />
+                    <Route path="/ongs/cadastro" element={<PrivateRoute children={<CadastroOng />} />} />
                     <Route path="/cadastro" element={<Cadastro />} />
                 </Routes>
             </BrowserRouter>
