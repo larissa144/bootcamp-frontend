@@ -71,7 +71,25 @@ const Select = styled.select`
     border: none
 `
 
+const Message = styled.p`
+    padding: 5px;
+`
+
+const SubtitleSocialMedia = styled.p`
+    padding: 5px;
+    color: #5A5657;
+    font-size: 15px;
+    text-align: center;
+`
+
+const OngImgField = styled.input`
+    display: none
+`
+
 export {
+    Message,
+    SubtitleSocialMedia,
+    OngImgField,
     DivImg,
     Subtitle,
     Title,

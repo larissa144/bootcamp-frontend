@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import styled from 'styled-components'
 import '../../assets/css/style.css'
 import { ColorBodyWhite } from '../layouts/background-color'
 import { Card } from '../layouts/card'
@@ -8,20 +7,13 @@ import Button from '../layouts/button'
 import Input from './input'
 import { FiUser, FiMail, FiPhone, FiMapPin, FiBriefcase } from "react-icons/fi";
 import { handleChange } from '../../utils/handleChange';
-import { DivImg, Subtitle, Title, DivButton, DivInput, DivTitles, DivCard, Select, OngImageContainer } from './styled'
+import { Message, SubtitleSocialMedia, OngImgField, DivImg, Subtitle, Title, DivButton, DivInput, DivTitles, DivCard, Select, OngImageContainer } from './styled'
 import Footer from "../layouts/footer"
 import img from "../../assets/img/ong1.png"
 import { useKeycloak } from '@react-keycloak/web'
 import axios from "axios"
 import { useNavigate } from 'react-router-dom';
 
-const Message = styled.p`
-    padding: 5px;
-`
-
-const OngImgField = styled.input`
-    display: none
-`
 function getBase64(file) {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
@@ -40,17 +32,17 @@ function CadastroOng() {
     const [ address, setAddress ] = useState("");
     const [ category, setCategory ] = useState("");
     const [ ongImg, setOngImg ] = useState(null)
-    const [ imgPreview, setImgPreview ] = useState(null)
+    const [ imgPreview, setImgPreview ] = useState(img)
     const [ categories, setCategories ] = useState([])
-
     const [ message, setMessage ] = useState("");
-    const inputRef = React.useRef(null);
     const { keycloak, initialized } = useKeycloak();
+    
+    const inputRef = React.useRef(null);
 
     useEffect(() => {
         if(!ongImg) return;
         const updateImagePreview = async () => {
-            setImgPreview(await getBase64(ongImg))
+            setImgPreview(await getBase64(ongImg));
         }
         updateImagePreview();
     }, [ ongImg ]);
@@ -64,45 +56,56 @@ function CadastroOng() {
                         Authorization: "Bearer " + keycloak.token
                     },
                 });
-                setCategories(result.data.content)
+                setCategories(result.data.content);
             }
         }
         getCategories();
     }, [ initialized, keycloak.token ]);
 
+    const createOng = async () => {
+        const config = {
+            headers: {
+                Authorization: "Bearer " + keycloak.token
+            }
+        };
+        const payload = {
+            nome: name,
+            idCategoria: category,
+            contato: {
+                telefone: phone,
+                endereco: address,
+                email: "string",
+            },
+            cnpj 
+        };
+        return await axios.post("http://ec2-3-17-26-83.us-east-2.compute.amazonaws.com:8080/ongs", payload, config);
+    };
+
+    const addOngImage = async (ongId) => {
+        const formData = new FormData();
+        formData.append('arquivo', ongImg)
+        const config = {
+            headers: {
+                'content-type': 'multipart/form-data',
+                Authorization: "Bearer " + keycloak.token
+            }
+        }
+        if(ongImg) {
+            await axios.put(
+                `http://ec2-3-17-26-83.us-east-2.compute.amazonaws.com:8080/ongs/${ongId}/upload-imagem`,
+                formData,
+                config
+            );
+        }
+    };
+
     const registerOng = async () => {
         try {
             setMessage("Carregando...");
-            const result = await axios.post("http://ec2-3-17-26-83.us-east-2.compute.amazonaws.com:8080/ongs", {
-                nome: name,
-                idCategoria: category,
-                contato: {
-                    telefone: phone,
-                    endereco: address,
-                    email: "string",
-                },
-                cnpj 
-            }, {
-                headers: {
-                    Authorization: "Bearer " + keycloak.token
-                },
-            });
-
-            const formData = new FormData();
-            formData.append('arquivo', ongImg)
-            const config = {
-                headers: {
-                    'content-type': 'multipart/form-data',
-                    Authorization: "Bearer " + keycloak.token
-                }
-            }
-            if(ongImg) {
-                await axios.put(
-                    `http://ec2-3-17-26-83.us-east-2.compute.amazonaws.com:8080/ongs/${result.data.id}/upload-imagem`,
-                    formData,
-                    config
-                );
-            }
+            
+            const result = await createOng();
+            await addOngImage(result.data.id);
+            
             setMessage("Ong criada!");
             setTimeout(() => {
                 navigate(`/ongs/${result.data.id}`)
@@ -122,7 +125,7 @@ function CadastroOng() {
             <ColorBodyWhite>
                 <DivImg>
                     <OngImageContainer>
-                        <img src={imgPreview || img} />
+                        <img src={imgPreview} />
                         <Button 
                             onClick={() => {
                                 inputRef.current.click()
@@ -188,6 +191,15 @@ function CadastroOng() {
                                 <option value="" disabled>Selecione uma categoria</option>
                                 { categories.map(item => (<option key={item.nome} value={item.id}>{item.nome}</option>)) }
                             </Select>
+                            {/* <SubtitleSocialMedia>Redes Sociais</SubtitleSocialMedia>
+                            <Input
+                                value={address}
+                                onChange={handleChange(setAddress)}
+                                icon={FiMapPin}
+                                textInput='Endereço'
+                                width={'85%'} 
+                                height={'8%'}
+                            /> */}
                         </DivInput>
                         <DivButton>
                             <Button 
