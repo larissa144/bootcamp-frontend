@@ -9,6 +9,7 @@ import Perfil from "../perfil/perfil"
 import keycloak from '../../utils/keycloak'
 import { ReactKeycloakProvider } from '@react-keycloak/web'
 import PrivateRoute from '../layouts/private-route';
+import FeedPage from '../feed/feed'
 
 function App() {
     return (
@@ -22,6 +23,7 @@ function App() {
                     <Route path="/ongs/:id" element={<PrivateRoute children={<Perfil />} />} />
                     <Route path="/criarNovaOng" element={<PrivateRoute children={<CriarNovaOng />} />} />
                     <Route path="/cadastro" element={<Cadastro />} />
+                    <Route path="/feedPage" element={<FeedPage />} />
                 </Routes>
             </BrowserRouter>
         </ReactKeycloakProvider>
