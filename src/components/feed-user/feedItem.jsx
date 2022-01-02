@@ -24,12 +24,13 @@ const LogoImage = styled.img`
 `
 const DivTitle = styled.div`
   width: 80%;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
 `
 const Title = styled.p`
     font-weight: ${props => props.weight};
     font-size: 12px;
     color: #6A676A;
+    word-break: break-all;
 `
 const FeedItem = ({name, text, id}) => {
     const [img, setImg] = useState(defaultImage)
