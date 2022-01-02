@@ -9,6 +9,7 @@ import Footer from '../layouts/footer';
 import axios from 'axios';
 import SocialMediaList from './SocialMediaList';
 import { get } from "../../utils/images"
+import PublishPost from './publish-post';
 
 function Perfil() {
     const { keycloak, initialized } = useKeycloak();
@@ -89,6 +90,7 @@ function Perfil() {
                 <PerfilSocialMedias>
                     <SocialMediaList socialMedias={socialMedias} />
                 </PerfilSocialMedias>
+                <PublishPost ong={ongData} />
             </Main>
             <Footer />
         </>
