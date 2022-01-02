@@ -108,7 +108,7 @@ const OngImgContainer = styled.div`
     }
 `
 const OngImg = styled.img`
-    max-width: 90%;
+    max-width: 200px;
     max-height: 200px;
     border-radius: 50%;
 `
