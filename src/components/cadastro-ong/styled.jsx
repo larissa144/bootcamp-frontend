@@ -6,12 +6,14 @@ const DivImg = styled.div`
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+    margin: 20px 0;
 `
 const DivCard = styled.div`
     display: flex;
     width: 50%;
     justify-content: center;
     align-items: center;
+    margin: 20px 0;
 `
 
 const OngImageContainer = styled.div`
