@@ -24,7 +24,6 @@ const LogoImage = styled.img`
 `
 const DivTitle = styled.div`
   width: 80%;
-  /* flex-wrap: wrap; */
 `
 const Title = styled.p`
     font-weight: ${props => props.weight};
