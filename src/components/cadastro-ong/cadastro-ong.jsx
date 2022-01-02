@@ -107,7 +107,7 @@ function CadastroOng() {
             contato: {
                 telefone: phone,
                 endereco: address,
-                email: "string",
+                email,
             },
             cnpj 
         };
