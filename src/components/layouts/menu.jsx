@@ -14,6 +14,9 @@ const Menu = () => {
                     <Link className="app-menu__link" to="/feed"> Início </Link>
                 </li>
                 <li className="app-menu__item">
+                    <Link className="app-menu__link" to="/ongs"> Listagem de ong's </Link>
+                </li>
+                <li className="app-menu__item">
                     <Link className="app-menu__link" to="/ongs/cadastro"> Cadastrar uma Ong </Link>
                 </li>
                 <li className="app-menu__item">

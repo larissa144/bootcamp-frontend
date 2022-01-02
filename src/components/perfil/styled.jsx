@@ -5,6 +5,7 @@ const Main = styled.div`
   padding: 40px;
   min-height: 100vh;
   position: relative;
+  flex-wrap: wrap;
 `
   
 const PerfilContent = styled.div`  
@@ -84,7 +85,14 @@ const SocialMediaImg = styled.img`
     margin: 5px 20px 5px 5px
 `
 
+const Publish = styled.div`
+    width: 100%;
+    padding: 10px;
+    background-color: aquamarine;
+`
+
 export {
+    Publish,
     SocialMediaImg,
     SocialMediaListContainer,
     SocialMediaListItemContainer,
