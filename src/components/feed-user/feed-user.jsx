@@ -53,6 +53,7 @@ const FeedUser = () => {
                 const params = {
                     pagina: page,
                     qtdPorPagina: 5,
+                    ordenacao: 'DESC'
                 }
 
                 const result = await axios.get("http://ec2-3-17-26-83.us-east-2.compute.amazonaws.com:8080/feed/usuarios/mensagens-feed", {
