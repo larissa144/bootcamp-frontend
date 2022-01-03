@@ -58,7 +58,7 @@ function Ongs() {
             <Header />
             <Main>
                 <header>
-                    <Title title={"Listagem de instituições cadastradas"} />
+                    <Title title={"Lista de ONGS cadastradas"} />
                     <Filters category={category} setCategory={setCategory} searchName={searchName} setSearchName={setSearchName} page={page} setPage={setPage} />
                 </header>
                 <OngList ongs={ongs} setOngs={setOngs} page={page} setPage={setPage} hasPrevious={hasPrevious} hasNext={hasNext} />
