@@ -10,6 +10,7 @@ import axios from 'axios';
 import SocialMediaList from './SocialMediaList';
 import { get } from "../../utils/images"
 import PublishPost from './publish-post';
+import FeedOng from '../feed-ong/feed-ong'
 
 function Perfil() {
     const { keycloak, initialized } = useKeycloak();
@@ -91,6 +92,7 @@ function Perfil() {
                     <SocialMediaList socialMedias={socialMedias} />
                 </PerfilSocialMedias>
                 <PublishPost ong={ongData} />
+                <FeedOng ong={ongData} id={id}/>
             </Main>
             <Footer />
         </>
