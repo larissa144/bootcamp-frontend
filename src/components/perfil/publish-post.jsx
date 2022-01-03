@@ -4,7 +4,7 @@ import { PublishContainer, PublishTextarea, PublishButton } from './styled'
 import { handleChange } from '../../utils/handleChange'
 import axios from 'axios';
 
-function PublishPost({ ong }) {
+function PublishPost({ ong, newPosts, setNewPosts }) {
     const { keycloak, initialized } = useKeycloak();
     const [ text, setText ] = useState("");
 
@@ -19,8 +19,8 @@ function PublishPost({ ong }) {
                     Authorization: "Bearer " + keycloak.token
                 }
             });
+            setNewPosts(text);
             setText("");
-            alert("Post publicado!");
         } catch (error) {
             console.error(error);
         }

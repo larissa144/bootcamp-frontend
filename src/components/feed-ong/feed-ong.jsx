@@ -31,19 +31,25 @@ const TextError = styled.p`
     color: #333232;
 `
 
-const FeedOng = ({id}) => {
+const FeedOng = ({ id, newPosts }) => {
     const { keycloak, initialized } = useKeycloak();
     const [ page, setPage ] = useState(1);
     const [feed, setFeed] = useState([])
     const [ hasPrevious, setHasPrevious ] = useState(false);
     const [ hasNext, setHasNext ] = useState(false);
+    const [ lastNewPosts, setLastNewPosts ] = useState([]);
 
     useEffect(() => {
         const getFeedOng = async () => {
+            let pageOfPosts = page;
+            if(lastNewPosts.length !== newPosts.length) {
+                pageOfPosts = 1;
+                setPage(1)
+                setLastNewPosts([ ...newPosts])
+            }
             if(initialized) {
-
                 const params = {
-                    pagina: page,
+                    pagina: pageOfPosts,
                     qtdPorPagina: 5,
                     ordenacao: 'DESC'
                 }
@@ -60,7 +66,7 @@ const FeedOng = ({id}) => {
             }
         }
         getFeedOng();
-    }, [ initialized, page,keycloak.token ]);
+    }, [ initialized, page, keycloak.token, newPosts, id ]);
 
     return(
         

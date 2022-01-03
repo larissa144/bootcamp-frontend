@@ -17,6 +17,7 @@ function Perfil() {
     const [ ongData, setOngData ] = useState({});
     const [ img, setImg ] = useState(defaultImage);
     const [ socialMedias, setSocialMedias ] = useState([]);
+    const [ newPosts, setNewPosts ] = useState([]);
 
     let { id } = useParams();
 
@@ -91,8 +92,8 @@ function Perfil() {
                 <PerfilSocialMedias>
                     <SocialMediaList socialMedias={socialMedias} />
                 </PerfilSocialMedias>
-                <PublishPost ong={ongData} />
-                <FeedOng ong={ongData} id={id}/>
+                <PublishPost newPosts={newPosts} setNewPosts={setNewPosts} ong={ongData} />
+                <FeedOng newPosts={newPosts} ong={ongData} id={id}/>
             </Main>
             <Footer />
         </>
