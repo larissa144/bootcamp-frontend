@@ -13,7 +13,7 @@ const Filter = styled.div`
 `
     
 const CategoryFilter = styled.div`
-    transition: .4s ease;
+    transition: .3s ease;
     display: flex;
     border-radius: 20px;
     cursor: pointer;
@@ -35,15 +35,16 @@ const Input = styled.input`
     height: ${props => props.height};
     padding: 8px 10px;
     height: 35px;
-    background: #ffffff;
+    background: #f1f1f1;
     border-radius: 20px;
     text-align: center;
-    border: 1px solid rgba(73, 13, 70, 0.51);
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: rgb(0 0 0 / 20%) 1px 1px 6px 3px;
     text-align: left;
     ::placeholder {
        color: rgba(73, 13, 70, 0.51);
     }
+    background-color: white;
+    border: none;
    :focus {
     box-shadow: 1px 1px 6px 3px rgb(137 41 140 / 47%);
     outline: 0;
@@ -61,14 +62,14 @@ const SelectFilter = styled.select`
     visibility: ${props => props.show ? "visible" : "hidden"};
     position: absolute;
     top: 40px;
-    transition: .4s ease; 
+    transition: .3s ease; 
     cursor: pointer
 ` 
 
 const OngsUl = styled.ul`
     display: flex;
     justify-content: space-around;
-    margin: 50px 0;
+    margin: 50px 0 0;
     flex-wrap: wrap
 `
 
@@ -81,7 +82,7 @@ const OngLi = styled.li`
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    margin-bottom: 50px;
+    background-color: white;
 
     > span {
         display: block;

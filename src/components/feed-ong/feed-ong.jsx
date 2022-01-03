@@ -21,7 +21,7 @@ const MsgErro = styled.div`
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    background: #ffffff;
+    background: #f1f1f1;
     margin-top: 4%;
     padding: 15px;
 `
@@ -69,7 +69,6 @@ const FeedOng = ({ id, newPosts }) => {
     }, [ initialized, page, keycloak.token, newPosts, id, lastNewPosts.length ]);
 
     return(
-        
         <AllElements> 
             {feed.length === 0 || null ? (
                 <MsgErro>

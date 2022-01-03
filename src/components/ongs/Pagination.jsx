@@ -6,24 +6,25 @@ import styled from 'styled-components'
 const PaginationUL = styled.ul`
     display: flex;
     list-style: none;
-    justify-content: space-between;
-    width: 125px;
-    margin: 0 30px 30px auto;
+    width: 100%;
+    justify-content: center;
+    margin: 40px 0;
+
 
     > li.current {
-        width: 20px;
+        width: 50px;
         cursor: default 
     }
 `
 
 const PaginationButton = styled.li`
-    width: 20px;
+    width: 50px;
     cursor: pointer;
-    transition: .4s ease;
+    transition: .3s ease;
     cursor: ${props => props.enable ? 'pointer' : 'default'};;
     
     :hover {
-        transform: ${props => props.enable ? 'scale(1.5)' : 'scale(1)'};
+        transform: ${props => props.enable ? 'scale(1.3)' : 'scale(1)'};
     }
 `
 
@@ -44,9 +45,9 @@ function Pagination({ page, setPage, hasNext, hasPrevious }) {
 
     return (
         <PaginationUL>
-            <PaginationButton onClick={previous} enable={hasPrevious}><FaAngleLeft size={23} color={!hasPrevious ? "#B4AEE8" : "#490D46"} /></PaginationButton>
-            <li className="current"><IoEllipse size={23} color="#B4AEE8" /></li>
-            <PaginationButton onClick={next} enable={hasNext}><FaAngleRight size={23} color={!hasNext ? "#B4AEE8" : "#490D46"} /></PaginationButton>
+            <PaginationButton onClick={previous} enable={hasPrevious}><FaAngleLeft size={40} color={!hasPrevious ? "#B4AEE8" : "#490D46"} /></PaginationButton>
+            <li className="current"><IoEllipse size={40} color="#B4AEE8" /></li>
+            <PaginationButton onClick={next} enable={hasNext}><FaAngleRight size={40} color={!hasNext ? "#B4AEE8" : "#490D46"} /></PaginationButton>
         </PaginationUL>
     );
 }

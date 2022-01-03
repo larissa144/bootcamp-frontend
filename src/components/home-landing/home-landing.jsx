@@ -17,7 +17,7 @@ const DivHeader = styled.div`
     display: flex;
     width: 100%;
     font-weight: 600;
-    color: #ffffff;
+    color: #f1f1f1;
     padding: 30px;
     justify-content: space-between;
     align-items: center;

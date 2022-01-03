@@ -5,13 +5,13 @@ import axios from "axios"
 import FeedList from './feed-list'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import Footer from '../layouts/footer'
 
 const AllElements = styled.div`
-    height: 100vh;
     display: flex;
     align-items: center;
     flex-direction: column;
-    background: #E5E5E5;
+    min-height: 100vh;
 `
 const MsgErro = styled.div`
     width: 40%;
@@ -23,7 +23,7 @@ const MsgErro = styled.div`
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    background: #ffffff;
+    background: #f1f1f1;
     margin-top: 10%;
     padding: 15px;
 `
@@ -87,6 +87,7 @@ const FeedUser = () => {
             )}
            
         </AllElements>
+        <Footer />
         </>
     )
 }

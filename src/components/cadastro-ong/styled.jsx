@@ -16,6 +16,20 @@ const DivCard = styled.div`
     margin: 20px 0;
 `
 
+const Card = styled.div`
+    margin: 20px 0;
+    width: ${props => props.width};
+    height: ${props => props.height};
+    background: #FFFFFF;
+    border-radius: 20px;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    display: flex;
+    padding: 30px 0;
+    box-shadow: rgb(0 0 0 / 20%) 1px 1px 6px 3px;
+`
+
 const OngImageContainer = styled.div`
     width: 50%;
     text-align: center;
@@ -62,7 +76,7 @@ const Subtitle = styled.p`
 `
 
 const Select = styled.select`
-    background: #ffffff;
+    background: white;
     border-radius: 16px;
     align-items: center;
     box-shadow: rgb(0 0 0 / 20%) 1px 1px 6px 3px;
@@ -100,5 +114,6 @@ export {
     DivTitles,
     DivCard,
     Select,
+    Card,
     OngImageContainer
 }

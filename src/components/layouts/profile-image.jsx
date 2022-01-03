@@ -9,6 +9,7 @@ const ProfileImageContainer = styled.div`
     height: 60px;
     position: relative;
     cursor: pointer;
+    font-weight: bold;
 
     > div {
         opacity: 0
@@ -80,12 +81,8 @@ const ProfileImage = ( {img, setImg, email} ) => {
     return(
         <ProfileImageContainer>
             <Img src={img} />
-            <CallToChangeImageLayer onClick={() => {
-                inputRef.current.click()
-            }}>Trocar foto</CallToChangeImageLayer>
-            <ProfileImageInput onChange={(e) => {
-                setNewProfileImg(e.target.files[0])
-            }} ref={inputRef} type="file" />
+            <CallToChangeImageLayer onClick={() => {inputRef.current.click()}}>Trocar foto</CallToChangeImageLayer>
+            <ProfileImageInput onChange={(e) => { setNewProfileImg(e.target.files[0]) }} ref={inputRef} type="file" />
         </ProfileImageContainer>
     )
 }

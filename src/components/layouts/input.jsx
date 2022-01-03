@@ -5,7 +5,6 @@ const InputLayout = styled.input`
     width: ${props => props.width};
     height: ${props => props.height};
     padding: 10px;
-    background: #ffffff;
     border-radius: 16px;
     text-align: center;
     border: none;
