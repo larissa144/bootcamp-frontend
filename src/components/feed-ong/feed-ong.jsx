@@ -66,7 +66,7 @@ const FeedOng = ({ id, newPosts }) => {
             }
         }
         getFeedOng();
-    }, [ initialized, page, keycloak.token, newPosts, id ]);
+    }, [ initialized, page, keycloak.token, newPosts, id, lastNewPosts.length ]);
 
     return(
         
