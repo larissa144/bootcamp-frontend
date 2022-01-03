@@ -17,7 +17,7 @@ const Menu = () => {
                     <Link className="app-menu__link" to="/ongs"> Lista de ONGS </Link>
                 </li>
                 <li className="app-menu__item">
-                    <Link className="app-menu__link" to="/ongs/cadastro"> Cadastrar uma ONG </Link>
+                    <Link className="app-menu__link" to="/ongs/cadastro"> Criar uma ONG </Link>
                 </li>
                 <li className="app-menu__item">
                     <Link onClick={(e) => {
