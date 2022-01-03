@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useKeycloak } from '@react-keycloak/web'
-import { Publish } from './styled'
+import { PublishContainer, PublishTextarea, PublishButton } from './styled'
 import { handleChange } from '../../utils/handleChange'
 import axios from 'axios';
 
@@ -27,14 +27,14 @@ function PublishPost({ ong }) {
     }
 
     return (
-        <Publish>
+        <PublishContainer>
             { ong.gestor && (
                 <>
-                    <textarea onChange={handleChange(setText)} value={text}></textarea>
-                    <button onClick={post}>Postar</button>
+                    <PublishTextarea placeholder="Escreva algo para seus seguidores" onChange={handleChange(setText)} value={text}></PublishTextarea>
+                    <PublishButton onClick={post}>Postar</PublishButton>
                 </>
             ) }
-        </Publish>
+        </PublishContainer>
     );
 }
 

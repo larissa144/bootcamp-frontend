@@ -85,14 +85,30 @@ const SocialMediaImg = styled.img`
     margin: 5px 20px 5px 5px
 `
 
-const Publish = styled.div`
+const PublishContainer = styled.div`
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    padding: 50px 0px 20px;
+`
+
+const PublishTextarea = styled.textarea`
+    width: 30%;
+    height: 100px;
     padding: 10px;
-    background-color: aquamarine;
+    resize: none;
+    margin-right: 10px; 
+`
+
+const PublishButton = styled.button`
+    cursor: pointer
 `
 
 export {
-    Publish,
+    PublishContainer,
+    PublishTextarea,
+    PublishButton,
     SocialMediaImg,
     SocialMediaListContainer,
     SocialMediaListItemContainer,
