@@ -4,6 +4,7 @@ import { useKeycloak } from '@react-keycloak/web'
 import axios from "axios"
 import FeedList from './feed-list'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 const AllElements = styled.div`
     height: 100vh;
@@ -11,6 +12,31 @@ const AllElements = styled.div`
     align-items: center;
     flex-direction: column;
     background: #E5E5E5;
+`
+const MsgErro = styled.div`
+    width: 40%;
+    height: 230px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
+    border: 1px solid #a39f9fa3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: #ffffff;
+    margin-top: 10%;
+    padding: 15px;
+`
+const TextError = styled.p`
+    font-size: 16px;
+    text-align: center;
+    color: #333232;
+`
+const TextLink = styled.p`
+    margin-top: 20px;
+    font-size: 12px;
+    text-align: center;
+    color: #440A67;
 `
 
 const FeedUser = () => {
@@ -47,7 +73,18 @@ const FeedUser = () => {
         <>
         <Header />
         <AllElements> 
-            <FeedList feed={feed} setFeed={setFeed} page={page} setPage={setPage} hasPrevious={hasPrevious} hasNext={hasNext} />
+            {feed.length === 0 || null ? (
+                <MsgErro>
+                    <TextError> você ainda não tem nada pra conferir, que tal começar seguindo alguma ong?</TextError>
+                    <Link to={'/ongs'}>
+                        <TextLink>clique aqui para conferir as ongs</TextLink>
+                    </Link>
+
+                </MsgErro>
+            ) : (
+                <FeedList feed={feed} setFeed={setFeed} page={page} setPage={setPage} hasPrevious={hasPrevious} hasNext={hasNext} />
+            )}
+           
         </AllElements>
         </>
     )
