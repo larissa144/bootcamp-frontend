@@ -84,7 +84,8 @@ const Select = styled.select`
     width: 90%;
     margin: 6px 5%;
     height: 37px;
-    border: none
+    border: none;
+    cursor: pointer
 `
 
 const Message = styled.p`
