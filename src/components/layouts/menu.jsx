@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import '../../assets/css/style.css'
 import { FiLogOut } from "react-icons/fi";
 import { useKeycloak } from '@react-keycloak/web'
+import OngAssociatedUser from "../ongs/OngUsers";
+
 
 const Menu = () => {
     const { keycloak } = useKeycloak()
@@ -15,6 +17,10 @@ const Menu = () => {
                 </li>
                 <li className="app-menu__item">
                     <Link className="app-menu__link" to="/ongs"> Listagem de ong's </Link>
+                </li>
+                <li className="app-menu__item">
+                    <Link className="app-menu__link" to="#"> Minhas ong's </Link>
+                    <OngAssociatedUser />
                 </li>
                 <li className="app-menu__item">
                     <Link className="app-menu__link" to="/ongs/cadastro"> Cadastrar uma Ong </Link>

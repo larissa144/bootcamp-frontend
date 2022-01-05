@@ -38,6 +38,7 @@ main {
 
 .app-menu__item {
     list-style: none;
+    display: inline-block;
 }
 
 .app-menu__link {
@@ -46,10 +47,39 @@ main {
     margin-right: 2rem;
     text-decoration: none;
     transform: .6s;
-    display: block;
+    display: block;    
 }
 
 .app-menu__link:hover {
+    transform: scale(1.1); 
+}
+
+.app-submenu__item{
+    color: #ffffff;
+    display: none;
+    border: solid 1px;
+    margin: 5em 0 5em 0;
+}
+
+/*CSS Submenu */
+.app-submenu__link {    
+    position: absolute;
+    font-family: sans-serif;
+    margin-right: 2rem;
+    margin-top: 2px ;
+    text-decoration: none;
+    transform: .6s;   
+    color: #000000;
+    border: solid 1px;
+    display: inline
+}
+
+.app-submenu__link:hover {
     transform: scale(1.1);
+}
+
+.app-menu__item:hover .app-submenu__item{
+    transform: scale(1.1); 
+    display: block;    
 }
 
