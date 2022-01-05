@@ -5,6 +5,7 @@ const Main = styled.main`
 `
 
 const Filter = styled.div`
+    margin-top: 40px;
     display: flex;
     justify-content: space-between;
     position: relative;
