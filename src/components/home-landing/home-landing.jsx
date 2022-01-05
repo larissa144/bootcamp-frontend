@@ -5,10 +5,11 @@ import LogoImage from '../../assets/img/logo-branco.png'
 
 const Logo = styled.img`
   width: 40%;
+  margin: 100px
 `
 const DivImg = styled.div`
   display: flex;
-  margin-top: 12%;
+  margin-top: 40px;
   margin-right: 10%;
   justify-content: center;
   align-items: center;

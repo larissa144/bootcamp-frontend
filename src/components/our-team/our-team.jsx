@@ -8,7 +8,7 @@ import Luan from '../../assets/img/luan.png'
 import Mateus from '../../assets/img/mateus.png'
 
 const AllElements = styled.div`
-    margin: 0 30px 8%;
+    padding: 30px 8%;
 `
 const Title = styled.p`
   font-size: ${props => props.size};
@@ -32,7 +32,8 @@ const DivImg = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 10%;
+  width: 15%;
+  padding: 45px 0 160px;
 `
 
 function OurTeam() {
