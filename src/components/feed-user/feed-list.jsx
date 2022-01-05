@@ -4,7 +4,8 @@ import styled from 'styled-components'
 
 const FeedContainer = styled.div`
     width: 100%;
-    min-height: 100vh
+    min-height: 100vh;
+    padding: 30px 0;
 `
 
 const FeedList = ({feed, setFeed, page, setPage,  hasNext, hasPrevious}) =>{
