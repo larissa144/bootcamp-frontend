@@ -17,9 +17,6 @@ const TextArea = styled.textarea`
     font-weight: 300;
     font-size: 14px;
     color: #6A676A;
-    :focus {
-    outline: 0;
-    }
 `
 
 const TextAreaComponent = () => {

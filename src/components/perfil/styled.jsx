@@ -99,6 +99,14 @@ const PublishTextarea = styled.textarea`
     padding: 10px;
     resize: none;
     margin-right: 10px; 
+    font-weight: 300;
+    font-size: 14px;
+    color: #6A676A;
+    box-shadow: 2px 2px 2px rgb(0 0 0 / 10%);
+    border: 1px solid #a39f9fa3;
+    :focus {
+        outline: 0;
+    }
 `
 
 const PublishButton = styled.button`

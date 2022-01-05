@@ -3,6 +3,7 @@ import { useKeycloak } from '@react-keycloak/web'
 import { PublishContainer, PublishTextarea, PublishButton } from './styled'
 import { handleChange } from '../../utils/handleChange'
 import axios from 'axios';
+import Button from "../layouts/button"
 
 function PublishPost({ ong, newPosts, setNewPosts }) {
     const { keycloak } = useKeycloak();
@@ -30,8 +31,8 @@ function PublishPost({ ong, newPosts, setNewPosts }) {
         <PublishContainer>
             { ong.gestor && (
                 <>
-                    <PublishTextarea placeholder="Escreva algo para seus seguidores" onChange={handleChange(setText)} value={text}></PublishTextarea>
-                    <PublishButton onClick={post}>Postar</PublishButton>
+                    <PublishTextarea maxLength="140" placeholder="Escreva algo para seus seguidores" onChange={handleChange(setText)} value={text}></PublishTextarea>
+                    <Button width="80px" onClick={post} textButton="Publicar" />
                 </>
             ) }
         </PublishContainer>
