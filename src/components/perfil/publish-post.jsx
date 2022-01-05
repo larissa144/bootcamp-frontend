@@ -28,14 +28,14 @@ function PublishPost({ ong, newPosts, setNewPosts }) {
     }
 
     return (
-        <PublishContainer>
+        <>
             { ong.gestor && (
-                <>
+                <PublishContainer>
                     <PublishTextarea maxLength="140" placeholder="Escreva algo para seus seguidores" onChange={handleChange(setText)} value={text}></PublishTextarea>
                     <Button width="80px" onClick={post} textButton="Publicar" />
-                </>
+                </PublishContainer>
             ) }
-        </PublishContainer>
+        </>
     );
 }
 
