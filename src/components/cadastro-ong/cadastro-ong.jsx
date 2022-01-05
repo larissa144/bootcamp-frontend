@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import '../../assets/css/style.css'
 import { ColorBodyWhite } from '../layouts/background-color'
-import { Card } from '../layouts/card'
 import  Header from '../layouts/header'
 import Button from '../layouts/button'
 import Input from './input'
 import { FiUser, FiMail, FiPhone, FiMapPin, FiBriefcase } from "react-icons/fi";
 import { handleChange } from '../../utils/handleChange';
-import { Message, SubtitleSocialMedia, OngImgField, DivImg, Subtitle, Title, DivButton, DivInput, DivTitles, DivCard, Select, OngImageContainer } from './styled'
+import { Message, Card, SubtitleSocialMedia, OngImgField, DivImg, Subtitle, Title, DivButton, DivInput, DivTitles, DivCard, Select, OngImageContainer } from './styled'
 import Footer from "../layouts/footer"
 import img from "../../assets/img/ong1.png"
 import { useKeycloak } from '@react-keycloak/web'

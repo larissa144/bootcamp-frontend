@@ -14,6 +14,7 @@ body, html {
     margin: 0 auto;
     overflow-x: hidden;
     font-family: Roboto;
+    background: #f1f1f1;
 }
 
 main {
@@ -34,22 +35,32 @@ main {
 
 .app-menu__list {
     display: flex;
+    height: 70px;
 }
 
 .app-menu__item {
     list-style: none;
+    height: 70px;
+    transition: .3s;
+    line-height: 70px;
+}
+
+.app-menu__item:hover {
+    background-color: rgb(255 255 255 / 8%);
 }
 
 .app-menu__link {
-    color: #ffffff;
+    color: #f1f1f1;
     font-family: sans-serif;
-    margin-right: 2rem;
     text-decoration: none;
-    transform: .6s;
-    display: block;
+    padding: 0 15px;
+    width: 100%;
+    line-height: 70px;
+    display: flex;
+    align-items: center;
 }
 
-.app-menu__link:hover {
-    transform: scale(1.1);
+.app-menu__link > svg {
+    margin-right: 6px;
+    margin-top: -2px;
 }
-

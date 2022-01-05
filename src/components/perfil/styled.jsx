@@ -85,14 +85,38 @@ const SocialMediaImg = styled.img`
     margin: 5px 20px 5px 5px
 `
 
-const Publish = styled.div`
+const PublishContainer = styled.div`
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    padding: 50px 0px 20px;
+`
+
+const PublishTextarea = styled.textarea`
+    width: 30%;
+    height: 100px;
     padding: 10px;
-    background-color: aquamarine;
+    resize: none;
+    margin-right: 10px; 
+    font-weight: 300;
+    font-size: 14px;
+    color: #6A676A;
+    box-shadow: 2px 2px 2px rgb(0 0 0 / 10%);
+    border: 1px solid #a39f9fa3;
+    :focus {
+        outline: 0;
+    }
+`
+
+const PublishButton = styled.button`
+    cursor: pointer
 `
 
 export {
-    Publish,
+    PublishContainer,
+    PublishTextarea,
+    PublishButton,
     SocialMediaImg,
     SocialMediaListContainer,
     SocialMediaListItemContainer,

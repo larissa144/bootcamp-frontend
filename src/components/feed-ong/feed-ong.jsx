@@ -1,21 +1,19 @@
 import React, { useEffect, useState } from 'react'
-import Header from '../layouts/header'
 import { useKeycloak } from '@react-keycloak/web'
 import axios from "axios"
 import FeedList from './feed-list'
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
-import Footer from '../layouts/footer'
 
 const AllElements = styled.div`
+    height: auto;
+    width: 100vw;
     display: flex;
     align-items: center;
     flex-direction: column;
-    min-height: 100vh;
 `
 const MsgErro = styled.div`
-    width: 40%;
-    height: 230px;
+    width: 35%;
+    height: 200px;
     border-radius: 10px;
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
     border: 1px solid #a39f9fa3;
@@ -24,7 +22,7 @@ const MsgErro = styled.div`
     justify-content: center;
     flex-direction: column;
     background: #f1f1f1;
-    margin-top: 10%;
+    margin-top: 4%;
     padding: 15px;
 `
 const TextError = styled.p`
@@ -32,31 +30,31 @@ const TextError = styled.p`
     text-align: center;
     color: #333232;
 `
-const TextLink = styled.p`
-    margin-top: 20px;
-    font-size: 12px;
-    text-align: center;
-    color: #440A67;
-`
 
-const FeedUser = () => {
+const FeedOng = ({ id, newPosts }) => {
     const { keycloak, initialized } = useKeycloak();
     const [ page, setPage ] = useState(1);
     const [feed, setFeed] = useState([])
     const [ hasPrevious, setHasPrevious ] = useState(false);
     const [ hasNext, setHasNext ] = useState(false);
+    const [ lastNewPosts, setLastNewPosts ] = useState([]);
 
     useEffect(() => {
-        const getFeed = async () => {
+        const getFeedOng = async () => {
+            let pageOfPosts = page;
+            if(lastNewPosts.length !== newPosts.length) {
+                pageOfPosts = 1;
+                setPage(1)
+                setLastNewPosts([ ...newPosts])
+            }
             if(initialized) {
-
                 const params = {
-                    pagina: page,
+                    pagina: pageOfPosts,
                     qtdPorPagina: 5,
                     ordenacao: 'DESC'
                 }
 
-                const result = await axios.get("http://ec2-3-17-26-83.us-east-2.compute.amazonaws.com:8080/feed/usuarios/mensagens-feed", {
+                const result = await axios.get(`http://ec2-3-17-26-83.us-east-2.compute.amazonaws.com:8080/feed/ongs/${id}/mensagens-feed`, {
                     headers: {
                         Authorization: "Bearer " + keycloak.token
                     },
@@ -67,29 +65,21 @@ const FeedUser = () => {
                 setFeed([ ...result.data.content ]);
             }
         }
-        getFeed();
-    }, [ initialized, page,keycloak.token ]);
+        getFeedOng();
+    }, [ initialized, page, keycloak.token, newPosts, id, lastNewPosts.length ]);
 
     return(
-        <>
-        <Header />
         <AllElements> 
             {feed.length === 0 || null ? (
                 <MsgErro>
-                    <TextError> Você ainda não tem nada para conferir. Que tal começar seguindo uma ong?</TextError>
-                    <Link to={'/ongs'}>
-                        <TextLink>clique aqui para conferir as ongs</TextLink>
-                    </Link>
-
+                    <TextError> Não há nada no feed para ser exibido</TextError>
                 </MsgErro>
             ) : (
                 <FeedList feed={feed} setFeed={setFeed} page={page} setPage={setPage} hasPrevious={hasPrevious} hasNext={hasNext} />
             )}
            
         </AllElements>
-        <Footer />
-        </>
     )
 }
 
-export default FeedUser
+export default FeedOng

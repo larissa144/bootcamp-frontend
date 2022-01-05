@@ -10,12 +10,14 @@ import axios from 'axios';
 import SocialMediaList from './SocialMediaList';
 import { get } from "../../utils/images"
 import PublishPost from './publish-post';
+import FeedOng from '../feed-ong/feed-ong'
 
 function Perfil() {
     const { keycloak, initialized } = useKeycloak();
     const [ ongData, setOngData ] = useState({});
     const [ img, setImg ] = useState(defaultImage);
     const [ socialMedias, setSocialMedias ] = useState([]);
+    const [ newPosts, setNewPosts ] = useState([]);
 
     let { id } = useParams();
 
@@ -90,7 +92,8 @@ function Perfil() {
                 <PerfilSocialMedias>
                     <SocialMediaList socialMedias={socialMedias} />
                 </PerfilSocialMedias>
-                <PublishPost ong={ongData} />
+                <PublishPost newPosts={newPosts} setNewPosts={setNewPosts} ong={ongData} />
+                <FeedOng newPosts={newPosts} ong={ongData} id={id}/>
             </Main>
             <Footer />
         </>
