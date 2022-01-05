@@ -20,7 +20,7 @@ const PaginationUL = styled.ul`
 const PaginationButton = styled.li`
     width: 50px;
     cursor: pointer;
-    transition: .3s ease;
+    transition: .3s;
     cursor: ${props => props.enable ? 'pointer' : 'default'};;
     
     :hover {

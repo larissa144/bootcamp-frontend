@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from 'react-router-dom'
 import '../../assets/css/style.css'
-import { FiLogOut } from "react-icons/fi";
+import { FiLogOut, FiHome } from "react-icons/fi";
 import { useKeycloak } from '@react-keycloak/web'
 
 const Menu = () => {
@@ -11,7 +11,7 @@ const Menu = () => {
         <nav className="app-menu">
             <ul className="app-menu__list">
                 <li className="app-menu__item">
-                    <Link className="app-menu__link" to="/feed"> Início </Link>
+                    <Link className="app-menu__link" to="/feed"><FiHome /> Início </Link>
                 </li>
                 <li className="app-menu__item">
                     <Link className="app-menu__link" to="/ongs"> Lista de ONGS </Link>

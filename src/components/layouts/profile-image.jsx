@@ -36,7 +36,7 @@ const CallToChangeImageLayer = styled.div`
     left: 0;
     color: white;
     text-align: center;
-    transition: .8s;
+    transition: .3s;
     font-size: .8em;
     padding: 15px 0;
 `

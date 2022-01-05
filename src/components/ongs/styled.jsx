@@ -13,7 +13,7 @@ const Filter = styled.div`
 `
     
 const CategoryFilter = styled.div`
-    transition: .3s ease;
+    transition: .3s;
     display: flex;
     border-radius: 20px;
     cursor: pointer;
@@ -62,7 +62,7 @@ const SelectFilter = styled.select`
     visibility: ${props => props.show ? "visible" : "hidden"};
     position: absolute;
     top: 40px;
-    transition: .3s ease; 
+    transition: .3s;
     cursor: pointer
 ` 
 

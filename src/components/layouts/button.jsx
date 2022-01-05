@@ -11,7 +11,11 @@ const ButtonLayout = styled.button`
     text-align: center;
     cursor: pointer;
     padding: 10px 0px;
-    transition: .3s ease;
+    transition: .3s;
+
+    :hover {
+        background: ${props => props.active ? '#440A67' : '#B4AEE8'};
+    }
 `
 
 const Button = ({textButton, width, height, active, onClick}) =>  {
