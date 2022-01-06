@@ -24,15 +24,16 @@ function OngAssociatedUser() {
     }, [ initialized, keycloak.token ]);
 
     return (
-        <>
-           {ongsUser.map(item => (
-               <li className="app-submenu__item">
+       
+        <ul className="app-submenu__list">
+           {ongsUser.map(item => (              
+                <li className="app-submenu__item">
                     <Link className="app-submenu__link" to={`/ongs/${item.id}`}> 
                         {item.nome}
                     </Link>
                 </li>
             ))}
-        </>
+        </ul>
     );
 }
 

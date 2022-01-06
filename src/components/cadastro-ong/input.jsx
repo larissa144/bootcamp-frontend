@@ -3,6 +3,7 @@ import styled from 'styled-components'
 const InputLayout = styled.input`
     width: ${props => props.width};
     height: ${props => props.height};
+    background-color: white;
     padding: 14px 10px;
     border: 0px solid;
     text-align: left;
@@ -15,7 +16,7 @@ const InputLayout = styled.input`
 `
 
 const InputContainer = styled.div`
-    background: #ffffff;
+    background: white;
     border-radius: 16px;
     display: flex;
     align-items: center;

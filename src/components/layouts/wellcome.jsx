@@ -40,8 +40,6 @@ const Wellcome = ( ) =>{
         }
     }, [ initialized, keycloak, keycloak.token ]);
 
-    console.log('keycloack', keycloak)
-
     return(
         <WellcomeDiv>
             <ProfileImage email={email} img={img} setImg={setImg} />
