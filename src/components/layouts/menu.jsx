@@ -19,7 +19,7 @@ const Menu = () => {
                     <Link className="app-menu__link" to="/ongs"> Lista de ONGS </Link>
                 </li>
                 <li className="app-menu__item">
-                    <Link className="app-menu__link" to="#"> Minhas ong's </Link>
+                    <Link className="app-menu__link" to="#"> Minhas ONGS </Link>
                     <OngAssociatedUser />
                 </li>
                 <li className="app-menu__item">
