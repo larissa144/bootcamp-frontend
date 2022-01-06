@@ -36,13 +36,17 @@ main {
 .app-menu__list {
     display: flex;
     height: 70px;
+    width: 100%; 
 }
 
 .app-menu__item {
     list-style: none;
+    display: inline-block;
     height: 70px;
     transition: .3s;
     line-height: 70px;
+    padding: 0px 10px;
+    position:relative;
 }
 
 .app-menu__item:hover {
@@ -53,11 +57,46 @@ main {
     color: #f1f1f1;
     font-family: sans-serif;
     text-decoration: none;
-    padding: 0 15px;
-    width: 100%;
-    line-height: 70px;
-    display: flex;
-    align-items: center;
+    transform: .6s;
+    display: block;    
+}
+/*CSS Submenu */
+
+.app-submenu__list {
+    display: none;
+    width: 100%;  
+    list-style-type: none;   
+    padding-inline-start: 0px; 
+    z-index: 9999999999;
+    position: absolute;
+    left:0px;
+}
+
+
+.app-submenu__item{
+    line-height: 25px;
+    background:#772d86;
+    color: #f1f1f1;
+    text-align: center;
+    border-top: solid 1px;
+    padding: 5px 0;
+}
+
+.app-submenu__link {    
+    font-family: sans-serif;
+    text-decoration: none;
+    transform: .6s;   
+    display: inline
+}
+
+.app-submenu__link:hover {
+    transform: scale(1.1);  
+    display: block;
+}
+
+.app-menu__item:hover .app-submenu__list{
+    display: flex;    
+    flex-direction: column;
 }
 
 .app-menu__link > svg {
