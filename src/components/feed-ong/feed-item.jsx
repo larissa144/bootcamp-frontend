@@ -6,20 +6,19 @@ import defaultImage from '../../assets/img/ong1.png';
 import { get } from "../../utils/images"
 
 const PubliDiv = styled.div`
-    width: 35%;
-    height: 110px;
+    width: 45%;
     background: #FFFFFF;
-    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
-    border: 1px solid #a39f9fa3;
-    border-radius: 5px;
+    box-shadow: 1px 1px 5px 2px #c7bfbf;
+    border-radius: 15px;
     align-items: center;
     display: flex;
     justify-content: space-around;
-    margin: 10px auto;
+    margin: 25px auto;
+    padding 15px 10px;
 `
 const LogoImage = styled.img`
-  width: 50px;
-  height: 50px;
+  width: 75px;
+  height: 75px;
   border-radius: 100px;
 `
 const DivTitle = styled.div`
@@ -27,7 +26,7 @@ const DivTitle = styled.div`
 `
 const Title = styled.p`
     font-weight: ${props => props.weight};
-    font-size: 12px;
+    font-size: 16px;
     color: #6A676A;
     word-break: break-all;
 `

@@ -39,10 +39,16 @@ const TextLink = styled.p`
     color: #440A67;
 `
 
+const Loading = styled.div`
+    color: #333;
+    padding: 80px;
+`
+
 const FeedUser = () => {
     const { keycloak, initialized } = useKeycloak();
     const [ page, setPage ] = useState(1);
-    const [feed, setFeed] = useState([])
+    const [feed, setFeed] = useState([]);
+    const [loading, setLoading] = useState(true);
     const [ hasPrevious, setHasPrevious ] = useState(false);
     const [ hasNext, setHasNext ] = useState(false);
 
@@ -65,6 +71,7 @@ const FeedUser = () => {
                 setHasPrevious(result.data.temPaginaAnterior);
                 setHasNext(result.data.temProximaPagina);
                 setFeed([ ...result.data.content ]);
+                setLoading(false);
             }
         }
         getFeed();
@@ -74,17 +81,23 @@ const FeedUser = () => {
         <>
         <Header />
         <AllElements> 
-            {feed.length === 0 || null ? (
-                <MsgErro>
-                    <TextError> Você ainda não tem nada para conferir. Que tal começar seguindo uma ong?</TextError>
-                    <Link to={'/ongs'}>
-                        <TextLink>clique aqui para conferir as ongs</TextLink>
-                    </Link>
+            {
+                !loading ? (
+                    feed.length === 0 || null ? (
+                        <MsgErro>
+                            <TextError> Você ainda não tem nada para conferir. Que tal começar seguindo uma ong?</TextError>
+                            <Link to={'/ongs'}>
+                                <TextLink>clique aqui para conferir as ongs</TextLink>
+                            </Link>
 
-                </MsgErro>
-            ) : (
-                <FeedList feed={feed} setFeed={setFeed} page={page} setPage={setPage} hasPrevious={hasPrevious} hasNext={hasNext} />
-            )}
+                        </MsgErro>
+                    ) : (
+                        <FeedList feed={feed} setFeed={setFeed} page={page} setPage={setPage} hasPrevious={hasPrevious} hasNext={hasNext} />
+                    )
+                ) : (
+                    <Loading>Carregando...</Loading>
+                )
+            }
            
         </AllElements>
         <Footer />
