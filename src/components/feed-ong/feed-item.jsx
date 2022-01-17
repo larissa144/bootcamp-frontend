@@ -14,7 +14,7 @@ const PubliDiv = styled.div`
     display: flex;
     justify-content: space-around;
     margin: 25px auto;
-    padding 15px 10px;
+    padding 20px 10px;
 `
 const LogoImage = styled.img`
   width: 75px;
