@@ -5,10 +5,11 @@ import LogoImage from '../../assets/img/logo-branco.png'
 
 const Logo = styled.img`
   width: 40%;
+  margin: 100px
 `
 const DivImg = styled.div`
   display: flex;
-  margin-top: 12%;
+  margin-top: 40px;
   margin-right: 10%;
   justify-content: center;
   align-items: center;
@@ -17,14 +18,30 @@ const DivHeader = styled.div`
     display: flex;
     width: 100%;
     font-weight: 600;
-    color: #ffffff;
-    padding: 30px;
+    color: #f1f1f1;
+    padding: 30px 60px;
     justify-content: space-between;
     align-items: center;
 `
 const StyleLink = styled(Link)`
     margin-right: 20px;
 `
+
+const LinkContainer = styled.div`
+    display: flex;
+    width: 165px;
+    justify-content: space-around;
+
+    > a {
+        font-weight: 400;
+        display: block
+    }
+
+    > a:hover {
+        font-weight: bold
+    }
+`
+
 const Backgroud = styled.div`
   width: 100vw;
   height: 100vh;
@@ -40,10 +57,10 @@ function HomeLanding() {
           <DivHeader>
             <div> Bem vindo ao idonation</div>
         
-            <div>
+            <LinkContainer>
               <StyleLink to="/cadastro">Cadastro</StyleLink>
               <Link to="/login">Login</Link>
-            </div>
+            </LinkContainer>
           </DivHeader>
   
             <DivImg>

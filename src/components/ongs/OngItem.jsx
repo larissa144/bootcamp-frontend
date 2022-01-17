@@ -2,35 +2,36 @@ import React, { useEffect, useState } from 'react';
 import Button from '../layouts/button';
 import { OngLi, OngImgContainer, OngImg } from './styled'
 import axios from 'axios';
-import defaultImage from '../../assets/img/ong1.png';
 import { useKeycloak } from '@react-keycloak/web'
 import { Link } from 'react-router-dom';
+import defaultImage from '../../assets/img/ong1.png';
+import { get } from "../../utils/images"
 
 function OngItem({ id, name, category, isFollowing, ongs, setOngs }) {
     const { keycloak, initialized } = useKeycloak()
-    const [img, setImg] = useState(null);
+    const [img, setImg] = useState(defaultImage);
     
 
-    useEffect(async () => {
-        if(initialized) {
-            try {
-                const result = await axios.get(`http://ec2-3-17-26-83.us-east-2.compute.amazonaws.com:8080/ongs/${id}/download-imagem`, {
-                    headers: {
-                        Authorization: "Bearer " + keycloak.token
-                    },
-                    responseType: 'arraybuffer'
-                });
-                setImg(`data:image/jpeg;base64,${Buffer.from(result.data, 'binary').toString('base64')}`)
-            } catch (error) {
-                setImg(defaultImage)
+    useEffect(() => {
+        const getOngPicture = async () => {
+            if(initialized) {
+                try {
+                    const imgFromApi = await get(`http://ec2-3-17-26-83.us-east-2.compute.amazonaws.com:8080/ongs/${id}/download-imagem`, keycloak);
+                    if(imgFromApi) {
+                        setImg(imgFromApi)
+                    }
+                } catch (error) {
+                    console.error(error)
+                }
             }
         }
-    }, [ initialized ])
+        getOngPicture();
+    }, [ initialized, keycloak, id ])
 
     const toggleFollow = async () => {
         const seguir = !isFollowing;
         try {
-            const result = await axios.put(`http://ec2-3-17-26-83.us-east-2.compute.amazonaws.com:8080/ongs/${id}/seguir`,
+            await axios.put(`http://ec2-3-17-26-83.us-east-2.compute.amazonaws.com:8080/ongs/${id}/seguir`,
                 {
                     seguir
                 },
@@ -49,10 +50,10 @@ function OngItem({ id, name, category, isFollowing, ongs, setOngs }) {
                 newItem.situacao = seguir ? "SEGUINDO" : "NAO_SEGUINDO";
                 return newItem;
             })
-            setOngs(newOngs)
-            console.log({result})
 
+            setOngs(newOngs)
         } catch (error) {
+            console.error({error})
         }
     }
 

@@ -65,8 +65,8 @@ jobs:
           ssh-keygen -f ${HOME}/.ssh/id_rsa -y
           eval "$(ssh-agent -s)"
           ssh-add ${HOME}/.ssh/id_rsa
-          ssh-keyscan -t rsa -H 3.141.196.157 >> ${HOME}/.ssh/known_hosts
-          ssh ec2-user@3.141.196.157 docker pull $CONTAINER_NAME:$VERSION
+          ssh-keyscan -t rsa -H 3.17.26.83 >> ${HOME}/.ssh/known_hosts
+          ssh ec2-user@3.17.26.83 docker pull $CONTAINER_NAME:$VERSION
 
   run:
 
@@ -86,6 +86,6 @@ jobs:
           ssh-keygen -f ${HOME}/.ssh/id_rsa -y
           eval "$(ssh-agent -s)"
           ssh-add ${HOME}/.ssh/id_rsa
-          ssh-keyscan -t rsa -H 3.141.196.157 >> ${HOME}/.ssh/known_hosts
-          ssh ec2-user@3.141.196.157 docker rm -f $IMAGE_NAME || true
-          ssh ec2-user@3.141.196.157 docker run -idt -p 80:80 --name=$IMAGE_NAME $CONTAINER_NAME:$VERSION
+          ssh-keyscan -t rsa -H 3.17.26.83 >> ${HOME}/.ssh/known_hosts
+          ssh ec2-user@3.17.26.83 docker rm -f $IMAGE_NAME || true
+          ssh ec2-user@3.17.26.83 docker run -idt -p 80:80 --name=$IMAGE_NAME --restart always $CONTAINER_NAME:$VERSION

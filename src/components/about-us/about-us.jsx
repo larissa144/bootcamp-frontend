@@ -5,7 +5,7 @@ import Vision from '../../assets/img/vision.png'
 import Values from '../../assets/img/values.png'
 
 const AllElements = styled.div`
-    padding: 30px;
+    padding: 30px 8%;
 `
 const Title = styled.p`
   font-size: ${props => props.size};
@@ -19,7 +19,8 @@ const Images = styled.img`
 const DivImg = styled.div`
   display: flex;
   width: 100%;
-  margin-top: 12%;
+  margin-top: 40px;
+  align-items: center;
 `
 
 function AboutUsLanding() {

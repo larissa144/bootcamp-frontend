@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Secured from '../../pages/secured';
 import Ongs from '../ongs/Ongs';
-import CriarNovaOng from '../ong/criarNovaOng';
+import CadastroOng from '../cadastro-ong/cadastro-ong';
 import Cadastro from '../cadastro/cadastro';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import LandingPage from '../../pages/landing-page';
@@ -9,6 +9,7 @@ import Perfil from "../perfil/perfil"
 import keycloak from '../../utils/keycloak'
 import { ReactKeycloakProvider } from '@react-keycloak/web'
 import PrivateRoute from '../layouts/private-route';
+import FeedUser from '../feed-user/feed-user'
 
 function App() {
     return (
@@ -17,10 +18,10 @@ function App() {
                 <Routes>
                     <Route path="/" element={<LandingPage />} />
                     <Route path="/login" element={<Secured />} />
-                    <Route path="/feed" element={<PrivateRoute children={<Ongs />} />} />
+                    <Route path="/feed" element={<PrivateRoute children={<FeedUser />} />} />
                     <Route path="/ongs" element={<PrivateRoute children={<Ongs />} />} />
                     <Route path="/ongs/:id" element={<PrivateRoute children={<Perfil />} />} />
-                    <Route path="/criarNovaOng" element={<PrivateRoute children={<CriarNovaOng />} />} />
+                    <Route path="/ongs/cadastro" element={<PrivateRoute children={<CadastroOng />} />} />
                     <Route path="/cadastro" element={<Cadastro />} />
                 </Routes>
             </BrowserRouter>

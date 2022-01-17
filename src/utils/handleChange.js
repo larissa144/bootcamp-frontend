@@ -1,3 +1,5 @@
-export const HandleChange = (event, setState) => {
-    setState(event.target.value)
+export const handleChange = (setState) => {
+    return (e) => {
+        setState(e.target.value)
+    }
 }

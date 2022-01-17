@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import OngItem from './OngItem';
 import Pagination from './Pagination';
 import { OngsUl } from './styled'
@@ -13,7 +13,9 @@ function OngList({ ongs, setOngs, page, setPage, hasNext, hasPrevious }) {
                     )
                 }) }
             </OngsUl>
-            <Pagination page={page} setPage={setPage} hasPrevious={hasPrevious} hasNext={hasNext} />
+            {
+                ongs.length > 0 && (  <Pagination page={page} setPage={setPage} hasPrevious={hasPrevious} hasNext={hasNext} /> )
+            }
         </>
     );
 }

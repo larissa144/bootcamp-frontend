@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Navigate } from 'react-router';
 import { useKeycloak } from '@react-keycloak/web'
 
@@ -10,7 +10,7 @@ function Secured () {
             console.log({keycloak})
             keycloak.login();
         }
-    }, [ initialized ]);
+    }, [ initialized, keycloak ]);
 
     if (keycloak) {
         if (keycloak.authenticated) return (
